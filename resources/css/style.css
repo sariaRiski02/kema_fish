@@ -1,0 +1,22 @@
+
+body{
+    height: 200vh;
+}
+
+#phone{
+    display: none;
+}
+
+@media (max-width: 870px) {
+    
+    #logo, #feature {
+        display: none;
+    }
+    
+    #phone {
+        display: flex;   
+    }
+
+    
+
+}

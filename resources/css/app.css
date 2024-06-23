@@ -4,9 +4,13 @@
 
 @font-face {
     font-family: 'Outfit';
-    src: url('/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+    src: url('/assets/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
 }
 
-.flex-grow-3 {
-    flex-grow: 3;
-  }
+.color-kema-fish {
+    color: #00417C;
+}
+
+/* *{
+    border: 1px solid red;
+} */
