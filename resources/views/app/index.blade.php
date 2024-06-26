@@ -17,7 +17,9 @@
     </header>
 
     <content>
-        @yield('content')
+        <div class="pt-40 px-14" id="content">
+            @yield('content')
+        </div>
     </content>
 
     {{-- <footer>

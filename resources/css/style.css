@@ -1,4 +1,15 @@
 
+#scrollbar::-webkit-scrollbar {
+    height: 12px; /* Tinggi scrollbar horizontal */
+}
+
+#scrollbar::-webkit-scrollbar-thumb {
+    background-color: #888; /* Warna handle scrollbar */
+    border-radius: 6px; /* Radius border handle scrollbar */
+}
+#category{
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.06);
+}
 body{
     height: 200vh;
 }
@@ -17,6 +28,78 @@ body{
         display: flex;   
     }
 
-    
+}
 
+@media screen and (max-width: 470px){
+
+    #scrollbar{
+        padding-top: 0;
+    }
+    #content {
+        padding-top: 8rem; /* Kurangi padding top untuk layar kecil */
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    #cateogry-container{
+        padding: 3px 3px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    #category{
+        width: 5rem;
+        height: 5rem;
+    }
+    #category-img{
+        width: 2rem;
+        height: 2rem;
+    }
+    #category-text{
+        font-size: 14px;
+    }
+
+
+    
+}
+
+@media screen and (max-width: 460px){
+    #product{
+        width: 7rem;
+        height: 11rem;
+        
+    }
+
+    #container-text-product{
+        margin: 0;
+        padding: 3px;
+        
+    }
+
+    #text-product{
+        font-size: 11px;
+        
+    }
+
+
+    #price{
+        font-size: 13px;
+    }
+    #product-img{
+        
+        width: 100px;
+        height: 100px;  
+    }
+
+    #cart{
+        width: 2rem;
+        height: 2rem;
+        padding: 4px;
+    }
+
+    /* #container-product{
+        flex-wrap: nowrap;
+    } */
+   
+    
 }

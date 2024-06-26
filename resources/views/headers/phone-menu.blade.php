@@ -1,4 +1,4 @@
-<div class="phone flex fixed w-full bottom-0 h-20  border">
+<div class="phone flex fixed w-full bottom-0 h-20  border bg-white">
 
     <div class="flex items-center justify-center w-1/4">
         <a href="#"

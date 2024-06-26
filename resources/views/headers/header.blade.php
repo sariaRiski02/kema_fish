@@ -35,7 +35,7 @@
             {{-- maps --}}
             <div class="flex items-center justify-center">
                 <a href="#" id="maps"
-                    class="flex items-center justify-center text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2  text-center gap-2 dark:focus:ring-[#3b5998]/55">
+                    class="border flex items-center justify-center text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2  text-center gap-2 dark:focus:ring-[#3b5998]/55">
                     <img src="{{ asset('/assets/icon/pin.svg') }}" alt="">
                     <span class="location">
                         Lihat Lokasi
