@@ -10,9 +10,7 @@
 #category{
     box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.06);
 }
-body{
-    height: 200vh;
-}
+
 
 #phone{
     display: none;
@@ -26,6 +24,10 @@ body{
     
     #phone {
         display: flex;   
+    }
+
+    .footer{
+        padding-bottom: 100px;
     }
 
 }
