@@ -23,7 +23,7 @@
 
             {{-- cart --}}
             <div class="flex items-center justify-center" id="cart">
-                <a href="#">
+                <a href="{{ route('cart') }}">
                     <img src="{{ asset('/assets/icon/cart.svg') }}" alt="">
                 </a>
             </div>
