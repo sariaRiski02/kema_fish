@@ -369,35 +369,61 @@
             </div>
             <div class="kurir">
                 <h5 class="mb-1 text-sm font-medium text-gray-500 dark:text-gray-400">Pilih Kurir</h5>
-                <div class="flex items-center">
-                    <input id="link-radio" type="radio" value=""
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="link-radio"
-                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">JNE</label>
+
+                <div class="flex flex-col">
+                    <div class="flex items-center me-4">
+                        <input id="inline-radio" type="radio" value="" name="inline-radio-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="inline-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            JNE
+                        </label>
+                    </div>
+                    <div class="flex items-center me-4">
+                        <input id="inline-2-radio" type="radio" value="" name="inline-radio-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="inline-2-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Post Indonesia
+                        </label>
+                    </div>
+                    <div class="flex items-center me-4">
+                        <input checked id="inline-checked-radio" type="radio" value="" name="inline-radio-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="inline-checked-radio"
+                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            TIKI
+                        </label>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <input id="link-radio" type="radio" value=""
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="link-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Post
-                        Indonesia</label>
-                </div>
-                <div class="flex items-center">
-                    <input id="link-radio" type="radio" value=""
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="link-radio"
-                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tiki</label>
-                </div>
+
 
 
             </div>
 
             <div class="paymentMethod">
                 <h5 class="mb-1 text-sm font-medium text-gray-500 dark:text-gray-400">Pilih Metode Pembayaran</h5>
-                <div class="flex items-center">
-                    <input checked id="default-radio" type="radio" value="" name="default-radio"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="default-radio-2"
-                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">OVO</label>
+                <div class="flex flex-col">
+                    <div class="flex items-center me-4">
+                        <input id="payment-radio" type="radio" value="" name="payment-radio-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="payment-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            OVO
+                        </label>
+                    </div>
+                    <div class="flex items-center me-4">
+                        <input id="payment-2-radio" type="radio" value="" name="payment-radio-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="payment-2-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Dana
+                        </label>
+                    </div>
+                    <div class="flex items-center me-4">
+                        <input checked id="payment-checked-radio" type="radio" value="" name="payment-radio-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="payment-checked-radio"
+                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Gopay
+                        </label>
+                    </div>
                 </div>
             </div>
 

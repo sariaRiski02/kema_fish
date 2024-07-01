@@ -18,7 +18,7 @@
 
 @media (max-width: 870px) {
     
-    #logo, #feature {
+    #logo, #maps, #barrier, #cart, #user {
         display: none;
     }
     
@@ -99,9 +99,11 @@
         padding: 4px;
     }
 
-    /* #container-product{
-        flex-wrap: nowrap;
-    } */
+    @media  screen and (max-width: 750px){
+        
+        
+        
+    }
    
     
 }
