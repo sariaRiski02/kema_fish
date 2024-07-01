@@ -17,10 +17,14 @@
     </header>
 
     <content>
-        <div class="pt-40 px-14" id="content">
+        <div class="pt-36 px-14" id="content">
             @yield('content')
         </div>
     </content>
+
+    <footer>
+        @include('footers.footer')
+    </footer>
 
 </body>
 

@@ -14,8 +14,6 @@
 
 @include('products.product')
 
-@include('footers.footer')
-
 {{-- modal authentication --}}
 @include('login.login')
 
