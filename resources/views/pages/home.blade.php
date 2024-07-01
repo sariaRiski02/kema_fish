@@ -3,18 +3,18 @@
 
 
 @section('header')
-@include('headers.header')
+@include('components.headers.header')
 @endsection
 
 @section('content')
 
 {{-- @include('banners.banner') --}}
 
-@include('categories.category')
+@include('components.category')
 
-@include('products.product')
+@include('components.product')
 
 {{-- modal authentication --}}
-@include('login.login')
+@include('components.login')
 
 @endsection

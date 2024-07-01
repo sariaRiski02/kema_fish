@@ -23,7 +23,7 @@
     </content>
 
     <footer>
-        @include('footers.footer')
+        @include('components.footer')
     </footer>
 
 </body>

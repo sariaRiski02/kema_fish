@@ -1,15 +1,6 @@
-@extends('app.index')
+<div class="flex gap-5 justify-between pb-3" id="cart-page">
 
-@section('header')
-@include('headers.header')
-@endsection
-
-
-@section('content')
-
-<div class="flex gap-5 justify-between pb-3">
-
-    <div class="flex flex-col w-full pr-3 gap-5 rounded-md">
+    <div id="item-cart" class="flex flex-col w-full pr-3 gap-5 rounded-md">
         <div class="flex-col flex gap-3 bg-white drop-shadow-md p-3">
             <div class="flex justify-end">
                 <button type="button" class="text-red-600 me-2">Hapus</button>
@@ -356,9 +347,9 @@
 
     </div>
 
-    <div class="flex justify-center w-2/6 flex-none cart-total ">
-        <div
-            class="flex fixed flex-col gap-2 w-2/6 pl-5  max-w-sm  p-4  bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <div id="total" class="flex justify-center w-2/6 flex-none cart-total">
+        <div class="flex fixed flex-col gap-2 w-2/6 pl-5  max-w-sm  p-4  bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700"
+            id="total-fixed">
 
             <div class="Total">
                 <h5 class=" text-xl font-medium text-gray-500 dark:text-gray-400">Total</h5>
@@ -440,8 +431,6 @@
 
 
             <div class="flex">
-
-
                 <button type="button"
                     class=" mt-2 text-white bg- hover:bg-blue-900 focus:ring-4 bg-blue-700 focus:outline-none focus:ring-blue-200 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">
                     Bayar
@@ -449,4 +438,7 @@
             </div>
         </div>
     </div>
-    @endsection
+
+
+
+</div>

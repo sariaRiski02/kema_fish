@@ -1,7 +1,7 @@
 @extends('app.index')
 
 @section('header')
-@include('headers.signupHeader')
+@include('components.headers.signupHeader')
 @endsection
 
 @section('content')

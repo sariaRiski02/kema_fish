@@ -8,5 +8,4 @@
             Image caption
         </figcaption>
     </figure>
-
 </div>

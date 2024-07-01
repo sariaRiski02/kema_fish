@@ -98,12 +98,29 @@
         height: 2rem;
         padding: 4px;
     }
+}
 
-    @media  screen and (max-width: 750px){
+    @media screen and (max-width: 750px){
+        #cart-page{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            width: 100%;
+        }
+        #total{
+            width: 100%;
+            display: flex;
+            
+            
+        }
+        #total-fixed{
+            position: relative;
+            width: 100%;
+            
+        }
         
-        
+
         
     }
-   
-    
-}

@@ -44,21 +44,21 @@
             </div>
 
             {{-- signin --}}
-            {{-- <div class="flex items-center justify-center">
+            <div class="flex items-center justify-center">
                 <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
                     class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
                     type="button">
                     Masuk
                 </button>
-            </div> --}}
+            </div>
 
             {{-- signup --}}
-            {{-- <div class="flex items-center justify-center">
+            <div class="flex items-center justify-center">
                 <a href="{{ route('signup') }}"
                     class=" border bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center text-white">
                     Daftar
                 </a>
-            </div> --}}
+            </div>
 
 
 
@@ -66,40 +66,33 @@
 
             {{-- notification --}}
 
-            <div class="bg-white border-gray-200 dark:bg-gray-900" id="notification">
+            {{-- <div class="bg-white border-gray-200 dark:bg-gray-900" id="notification">
                 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
-                    <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                    <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"> --}}
 
-                        <button type="button"
+                        {{-- <button type="button"
                             class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white  rounded-lg  border border-[#3b5998]"
                             id="user-menu-button" aria-expanded="false" data-dropdown-toggle="notification-dropdown"
-                            data-dropdown-placement="bottom">
+                            data-dropdown-placement="bottom"> --}}
                             {{-- logo --}}
-                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                            {{-- <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 21">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2"
                                     d="m9.046 3.59-.435-2.324m.435 2.324a5.338 5.338 0 0 1 6.033 4.333l.331 1.77c.439 2.344 2.383 2.587 2.599 3.76.11.586.22 1.171-.309 1.271L5 17.101c-.529.1-.639-.488-.749-1.074-.219-1.172 1.506-2.102 1.067-4.447l-.331-1.769a5.338 5.338 0 0 1 4.059-6.22Zm-7.13 4.602a8.472 8.472 0 0 1 2.17-5.048m2.646 13.633A3.472 3.472 0 0 0 13.46 16l.089-.5-6.817 1.277Z" />
-                            </svg>
+                            </svg> --}}
 
                             {{-- logo --}}
 
-                            <span
+                            {{-- <span
                                 class="inline-flex items-center justify-center w-4 h-4 ms-2 text-sm font-semibold text-blue-800 bg-blue-200 rounded-full">
                                 10
-                            </span>
-                        </button>
-                        {{--
-                        <button type="button"
-                            class="flex text-sm border rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                            id="user-menu-button" aria-expanded="false" data-dropdown-toggle="notification-dropdown"
-                            data-dropdown-placement="bottom">
-                            <span class="sr-only">Open user menu</span>
-                            <img class="w-8 h-8 rounded-full" src="{{ asset('/assets/logo/blue.png') }}"
-                                alt="user photo">
-                        </button> --}}
-                        <!-- Dropdown menu -->
-                        <div class="z-50 hidden drop-shadow-2xl border  my-4 w-96 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                            </span> --}}
+                            {{-- </button> --}}
+
+                        {{-- Dropdown menu --}}
+                        {{-- <div
+                            class="z-50 hidden drop-shadow-2xl border  my-4 w-96 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                             id="notification-dropdown">
                             <div class="px-4 py-3">
                                 <span class="block text-lg font-bold text-green-600 dark:text-white">
@@ -129,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             {{-- user --}}
             <div class="bg-white border-gray-200 dark:bg-gray-900" id="user">
@@ -175,6 +168,6 @@
     </div>
 
     <div id="phone">
-        @include('headers.phone-menu')
+        @include('components.headers.phone-menu')
     </div>
 </nav>
