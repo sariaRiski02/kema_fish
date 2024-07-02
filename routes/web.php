@@ -13,3 +13,12 @@ Route::get('/signup', function () {
 Route::get('/cart', function () {
     return view('pages.cart');
 })->name('cart');
+
+Route::get('/settings', function () {
+    return view('pages.setting');
+})->name('settings');
+
+
+Route::get('/product/code', function () {
+    return view('pages.itemProduct');
+});

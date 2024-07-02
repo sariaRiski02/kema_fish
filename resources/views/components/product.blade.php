@@ -7,7 +7,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -32,7 +32,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -57,7 +57,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -82,7 +82,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -107,7 +107,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -132,7 +132,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -157,7 +157,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -182,7 +182,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -207,7 +207,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -232,7 +232,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -257,7 +257,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -282,7 +282,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -307,7 +307,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -332,7 +332,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -357,7 +357,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -382,7 +382,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>
@@ -407,7 +407,7 @@
         <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             id="product">
 
-            <a href="#">
+            <a href="/product/code">
                 <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
                     style="max-width: 200px; max-height: 200px;" />
             </a>

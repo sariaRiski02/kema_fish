@@ -120,7 +120,11 @@
             width: 100%;
             
         }
-        
+    }
 
-        
+    @media screen and (max-width: 663px){
+        #itemProduct{
+            display: flex;
+            flex-direction: column;
+        }
     }
