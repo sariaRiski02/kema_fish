@@ -2,13 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AuthController;
+
 Route::get('/', function () {
     return view('pages.home');
 })->name('home');
-
-Route::get('/signup', function () {
-    return view('pages.signup');
-})->name('signup');
 
 Route::get('/cart', function () {
     return view('pages.cart');
@@ -22,3 +20,7 @@ Route::get('/settings', function () {
 Route::get('/product/code', function () {
     return view('pages.itemProduct');
 });
+
+
+Route::get('/signup', [AuthController::class, 'signupForm'])->name('signup');
+Route::post('/signup', [AuthController::class, 'signup']);
