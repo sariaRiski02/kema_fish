@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Livewire\UserLivewire;
 
 Route::get('/', function () {
     return view('pages.home');
@@ -21,6 +21,5 @@ Route::get('/product/code', function () {
     return view('pages.itemProduct');
 });
 
-
-Route::get('/signup', [AuthController::class, 'signupForm'])->name('signup');
-Route::post('/signup', [AuthController::class, 'signup']);
+Route::get('/signup', UserLivewire::class)->name('signup');
+Route::post('/signup', [UserLivewire::class]);

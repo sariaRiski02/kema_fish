@@ -4,10 +4,12 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Str;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -16,17 +18,16 @@ class User extends Authenticatable
 
     public $table = 'users';
     public $timestamps = true;
-    public $id = 'id';
     public $incrementing = false;
+    protected $primaryKey = 'id';
     protected $keyType = 'string';
 
 
     protected static function boot()
     {
         parent::boot();
-
         static::creating(function ($model) {
-            $model->{$model->getKeyName()} = (string) $model->generateUuid();
+            $model->{$model->getKeyName()} = (string) Str::uuid();
         });
     }
 

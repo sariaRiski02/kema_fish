@@ -23,6 +23,7 @@ class SignupRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ];
@@ -30,6 +31,6 @@ class SignupRequest extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        dd($validator->errors());
+        return redirect()->withInput()->withErrors($validator);
     }
 }
