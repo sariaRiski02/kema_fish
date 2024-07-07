@@ -22,11 +22,11 @@ class UserController extends Controller
 
         $data = $request->validated();
 
-        $response = Mail::to('muhammatsaria026@student.unsrat.ac.id', 'Test')
+
+        Mail::to('muhammatsaria026@student.unsrat.ac.id', 'Test')
             ->send(new SignupVerify());
 
 
-        dd($response);
 
         $user = new User();
         $user->email = $data['email'];

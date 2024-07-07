@@ -11,6 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name')->nullable();
@@ -19,6 +21,14 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+        });
+
+        Schema::create('tokens_activation', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('token');
+            $table->boolean('is_active');
+            $table->timestamps();
+            $table->foreignUuid('id_user')->constrained('users');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
