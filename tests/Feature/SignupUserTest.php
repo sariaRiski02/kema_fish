@@ -14,6 +14,7 @@ class SignupUserTest extends TestCase
         $this->artisan('migrate:fresh');
 
         $this->post('/signup', [
+            'name' => 'Test User',
             'email' => 'test123@yahoo.com',
             'password' => 'password123',
             'password_confirmation' => 'password123'

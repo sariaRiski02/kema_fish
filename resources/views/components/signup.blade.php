@@ -1,43 +1,118 @@
 <form class="max-w-md mx-auto" method="POST" action="/signup">
     @csrf
     <div class="relative z-0 w-full mb-5 group">
-        <input type="name" name="name" id="floating_name"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" " required />
-        <label for="floating_name"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+        <input type="text" name="name" id="floating_name" value="{{ old('name') }}" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 
+            @if ($errors->has('name'))
+            border-red-600 appearance-none dark:text-white dark:border-red-500 dark:focus:border-red-500 
+            focus:outline-none focus:ring-0 focus:border-red-600 
+            @else
+            border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 
+            focus:outline-none focus:ring-0 focus:border-blue-600 peer
+            @endif
+            " placeholder=" " required />
+        <label for="floating_name" class="peer-focus:font-medium absolute text-sm 
+            @if ($errors->has('name'))
+                text-red-600 dark:text-red-400
+            @else
+                text-gray-500 dark:text-gray-400 
+            @endif
+            duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6
+            
+            ">
             Nama</label>
+        @error('name')
+
+        <p id="standard_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
+                class="font-medium">Opss..!</span> {{ $message }}.</p>
+        @enderror
     </div>
     <div class="relative z-0 w-full mb-5 group">
-        <input type="email" name="email" id="floating_email"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" " required />
+        <input type="email" name="email" id="floating_email" value="{{ old('email') }}" class="
+             @if ($errors->has('email'))
+            border-red-600 appearance-none dark:text-white dark:border-red-500 dark:focus:border-red-500 
+            focus:outline-none focus:ring-0 focus:border-red-600 
+            @else
+            border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 
+            focus:outline-none focus:ring-0 focus:border-blue-600 peer
+            @endif
+            block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2  peer" placeholder=" "
+            required />
         <label for="floating_email"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Alamat
-            Email</label>
+            class="
+             @if ($errors->has('email'))
+                text-red-600 dark:text-red-400
+            @else
+                text-gray-500 dark:text-gray-400 
+            @endif
+            peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            Alamat Email
+        </label>
+        @error('email')
+
+        <p id="standard_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
+                class="font-medium">Opss..!</span> {{ $message }}.</p>
+        @enderror
     </div>
     <div class="relative z-0 w-full mb-5 group">
-        <input type="password" name="password" id="password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none 
-            focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <input type="password" name="password" id="password" class="
+        @if ($errors->has('password'))
+            border-red-600 appearance-none dark:text-white dark:border-red-500 dark:focus:border-red-500 
+            focus:outline-none focus:ring-0 focus:border-red-600 
+            @else
+            border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 
+            focus:outline-none focus:ring-0 focus:border-blue-600 peer
+            @endif
+        block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 peer" placeholder=" "
+            required />
         <label for="password"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            class="
+            @if ($errors->has('password'))
+                text-red-600 dark:text-red-400
+            @else
+                text-gray-500 dark:text-gray-400 
+            @endif
+            peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
             Password
         </label>
+        @error('password')
+
+        <p id="standard_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
+                class="font-medium">Opss..!</span> {{ $message }}.</p>
+        @enderror
     </div>
     <div class="relative z-0 w-full mb-5 group">
-        <input type="password" name="password_confirmation" id="confirm_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white 
+        <input type="password" name="password_confirmation" id="confirm_password" class="
+        @if ($errors->has('password'))
+            border-red-600 appearance-none dark:text-white dark:border-red-500 dark:focus:border-red-500 
+            focus:outline-none focus:ring-0 focus:border-red-600 
+            @else
+            border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 
+            focus:outline-none focus:ring-0 focus:border-blue-600 peer
+            @endif
+        block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white 
         dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none 
             focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
         <label for="confirm_password"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            class="
+             @if ($errors->has('password'))
+                text-red-600 dark:text-red-400
+            @else
+                text-gray-500 dark:text-gray-400 
+            @endif
+            peer-focus:font-medium absolute text-sm  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
             Konfirmasi password
         </label>
+        @error('password')
+
+        <p id="standard_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
+                class="font-medium">Opss..!</span> {{ $message }}.</p>
+        @enderror
 
     </div>
 
 
     <div class=" pb-5 flex items-center">
-        <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 
+        <input id="link-checkbox" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 
             dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
         <label for="link-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
             Lihat Password
