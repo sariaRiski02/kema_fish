@@ -2,9 +2,10 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SignupUserTest extends TestCase
 {
@@ -23,5 +24,19 @@ class SignupUserTest extends TestCase
         $this->assertDatabaseHas('users', [
             'email' => 'test123@yahoo.com'
         ]);
+    }
+
+
+    public function test_SignupAssertEmailhasSend()
+    {
+        $this->artisan('migrate:fresh');
+    }
+
+
+
+
+    public function test_VerifyToken()
+    {
+        $this->artisan('migrate:fresh');
     }
 }

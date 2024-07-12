@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
 
 class SignupRequest extends FormRequest
 {
@@ -56,6 +58,18 @@ class SignupRequest extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
+        $user = User::where('email', $this->input('email'))->first();
+
+        // cek apakah email sudah terdaftar dan belum aktif
+        // if ($validator->errors()->first('email') && !$user->tokenActivation->first()->is_active) {
+        //     throw new ValidationException($validator, redirect(to: '/signup/verify', headers: [
+        //         'email' => $this->input('email'),
+        //         'name' => $this->input('name'),
+        //         'password' => $this->input('password')
+        //     ]));
+        // }
+
+        // cek email sudah terdaftar dan aktif
         return redirect()
             ->route('signup')
             ->withInput()

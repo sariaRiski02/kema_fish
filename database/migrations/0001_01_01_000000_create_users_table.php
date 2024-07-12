@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->uuid('token');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
@@ -26,7 +27,8 @@ return new class extends Migration
         Schema::create('tokens_activation', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('token');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(false);
+            $table->dateTime('expired');
             $table->timestamps();
             $table->foreignUuid('id_user')->constrained('users');
         });

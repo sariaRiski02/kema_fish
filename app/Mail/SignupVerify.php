@@ -15,12 +15,17 @@ class SignupVerify extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $token;
+    private $email;
+    private $name;
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($name, $token, $email)
     {
-        //
+        $this->token = $token;
+        $this->email = $email;
+        $this->name = $name;
     }
 
     /**
@@ -29,8 +34,8 @@ class SignupVerify extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('mrizkisaria002@gmail.com', 'Test'),
-            subject: 'Test',
+            from: new Address('mrizkisaria002@gmail.com', 'KemaFish'),
+            subject: 'Verifikasi Alamat Email Anda',
         );
     }
 
@@ -41,6 +46,11 @@ class SignupVerify extends Mailable
     {
         return new Content(
             view: 'mail.mail',
+            with: [
+                'name' => $this->name,
+                'token' => $this->token,
+                'email' => $this->email,
+            ],
         );
     }
 

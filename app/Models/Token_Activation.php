@@ -17,6 +17,10 @@ class Token_Activation extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
 
+    protected $fillable = [
+        'token',
+        'expired'
+    ];
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user', 'id');
