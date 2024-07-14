@@ -24,7 +24,9 @@ Route::get('/product/code', function () {
 
 Route::get('/signup', [UserController::class, 'signupForm'])->name('signup');
 Route::post('/signup', [UserController::class, 'signupPost']);
-Route::get('/signup/verify', [UserController::class, 'signupVerify']);
+Route::get('/signup/verify', function () {
+    return view('pages.signupVerify');
+})->name('verify');
 Route::post('/signup/verify', [UserController::class, 'VerifyCode'])->name('signup.verify');
 
 // Route::get('/mail', function () {

@@ -19,12 +19,15 @@ class Token_Activation extends Model
 
     protected $fillable = [
         'token',
-        'expired'
+        'expired',
+        'is_active',
     ];
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
+
+
 
     protected static function boot()
     {
