@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use App\Mail\SignupVerify;
 use Illuminate\Support\Str;
@@ -12,11 +13,6 @@ use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
-
-    public function signupForm()
-    {
-        return view('pages.signup');
-    }
 
     public function signupPost(SignupRequest $request)
     {
@@ -45,15 +41,29 @@ class UserController extends Controller
 
         session([
             'email' => $newUser->email,
-            'tokenActizvation' => $newUser->token
+            'tokenActivation' => $newUser->token
         ]);
         return redirect()
             ->route('verify');
     }
 
-    public function signupVerify()
+    public function verifyForm()
     {
-        return view('pages.signupVerify');
+        $sessionEmail = session('email');
+        $tokenActivation = session('tokenActivation');
+
+        $result = $tokenActivation && $sessionEmail;
+        if (!$result) {
+            return redirect()->route('signup');
+        }
+
+        $user = User::where('email', $sessionEmail)->first();
+        $Token_verify = $user->tokenActivation->first();
+
+
+        return view('pages.signupVerify', [
+            'time' => $Token_verify->expired,
+        ]);
     }
 
     public function VerifyCode(Request $request)
@@ -69,9 +79,13 @@ class UserController extends Controller
             ]);
         }
         if ($token != $user->tokenActivation->first()->token) {
-            dd($token, $user->tokenActivation->first()->token);
             return redirect()->route('signup.verify')->withErrors([
                 'tokenActivation' => 'Token yang anda masukkan salah'
+            ]);
+        }
+        if ($user->tokenActivation->first()->expired < now()) {
+            return redirect()->route('signup.verify')->withErrors([
+                'tokenActivation' => 'Token sudah kadaluarsa'
             ]);
         }
         $user->tokenActivation->first()->update([
@@ -82,5 +96,61 @@ class UserController extends Controller
         // auth()->login($user);
 
         // return redirect()->route('home');
+    }
+
+    public function resendCode()
+    {
+        $sessionEmail = session('email');
+        $tokenActivation = session('tokenActivation');
+
+        $result = $tokenActivation && $sessionEmail;
+        if (!$result) {
+            return redirect()->route('verify')->withErrors([
+                'tokenActivation' => 'Token tidak ditemukan'
+            ]);
+        }
+
+        $user = User::where('email', $sessionEmail)->first();
+        $Token_verify = $user->tokenActivation()->update([
+            'token' => mt_rand(100000, 999999), // random angka 6 digit
+            'expired' => now()->addMinutes(7)
+        ]);
+
+        $token = $user->tokenActivation->first()->token;
+        Mail::to($user->email, 'KemaFish')
+            ->send(new SignupVerify(
+                $user->name,
+                $token,
+                $user->email
+            ));
+
+        session([
+            'email' => $user->email,
+            'tokenActivation' => $user->token
+        ]);
+        return redirect()->route('verify');
+    }
+
+
+
+    public function loginPost(LoginRequest $request)
+    {
+        $data = $request->validated();
+
+        $user = User::where('email', $data['email'])->first();
+
+        $password  = password_verify($data['password'], $user->password);
+        $email = $user->email == $data['email'];
+
+        $validation = $password && $email;
+        if (!$validation) {
+            return redirect()->route('login')->withErrors([
+                'errors' => 'Email atau password salah'
+            ]);
+        }
+
+        auth()->login($user);
+
+        return redirect()->route('home');
     }
 }

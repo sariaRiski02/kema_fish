@@ -45,21 +45,21 @@
             </div>
 
             {{-- signin --}}
-            {{-- <div class="flex items-center justify-center" id="signin">
+            <div class="flex items-center justify-center" id="signin">
                 <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
                     class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
                     type="button">
                     Masuk
                 </button>
-            </div> --}}
+            </div>
 
             {{-- signup --}}
-            {{-- <div class="flex items-center justify-center" id="signup">
+            <div class="flex items-center justify-center" id="signup">
                 <a href="{{ route('signup') }}"
                     class=" border bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center text-white">
                     Daftar
                 </a>
-            </div> --}}
+            </div>
 
 
 
@@ -72,7 +72,7 @@
                     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 
                         <button type="button"
-                            class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white  rounded-lg  border border-[#3b5998]"
+                            class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white  rounded-lg  border border-[#3b5998"
                             id="user-menu-button" aria-expanded="false" data-dropdown-toggle="notification-dropdown"
                             data-dropdown-placement="bottom">
                             {{-- logo --}}
@@ -85,10 +85,10 @@
 
                             {{-- end logo --}}
 
-                            <span
-                                class="inline-flex items-center justify-center w-4 h-4 ms-2 text-sm font-semibold text-blue-800 bg-blue-200 rounded-full">
+                            <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-sm font-semibold text-blue-800 bg-blue-200 
+                                rounded-full">
                                 10
-                            </span>z
+                            </span>
                         </button>
 
                         {{-- Dropdown menu --}}

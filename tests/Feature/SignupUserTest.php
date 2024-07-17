@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Mail\SignupVerify;
+use App\Models\Token_Activation;
 use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
@@ -10,48 +12,45 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SignupUserTest extends TestCase
 {
-    public function test_SignupSuccess()
+    use RefreshDatabase;
+
+    public function test_userSignupSuccess()
     {
 
-        $this->artisan('migrate:fresh');
-
+        Mail::fake();
         $this->post('/signup', [
-            'name' => 'Test User',
-            'email' => 'test123@yahoo.com',
-            'password' => 'password123',
-            'password_confirmation' => 'password123'
+            'name' => 'KemaFish',
+            'email' => 'test123@test.com',
+            'password' => 'password',
+            'password_confirmation' => 'password'
         ]);
+
+        $user = User::where('email', 'test123@test.com')->first();
 
         $this->assertDatabaseHas('users', [
-            'email' => 'test123@yahoo.com'
+            'email' => $user->email
         ]);
+
+        $this->assertDatabaseHas('tokens_activation', [
+            'id_user' => $user->id
+        ]);
+
+        Mail::assertSent(SignupVerify::class, function (SignupVerify $mail) use ($user) {
+            return $mail->hasTo($user->email) &&
+                $mail->email === $user->email &&
+                $mail->name === $user->name &&
+                (int) $user->tokenActivation->first()->token ===  $mail->token;
+        });
     }
 
-
-    public function test_SignupAssertEmailhasSend()
+    public function test_VerifyCodeSuccess()
     {
-        $this->artisan('migrate:fresh');
-    }
-
-    public function test_VerifyToken()
-    {
-        $this->artisan('migrate:fresh');
-        $this->artisan('db:seed');
-
-
-        $user = User::first();
-        $token_Auth = $user->tokenActivation()->create([
-            'token' => mt_rand(100000, 999999),
-            'expired' => now()->addMinutes(7),
-            'is_active' => true
+        Mail::fake();
+        $this->post('/signup', [
+            'name' => 'KemaFish',
+            'email' => 'test123@test.com',
+            'password' => 'password',
+            'password_confirmation' => 'password'
         ]);
-        $response = $this->post('/signup/verify', [
-            'token' => $token_Auth->token,
-        ])->withCookies([
-            'email' => $user->email,
-            'tokenActivation' => $token_Auth->token
-        ]);
-
-        $response->assertRedirect('/');
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Livewire\SignupLivewire;
 use App\Livewire\UserLivewire;
+use GuzzleHttp\Psr7\Request;
 
 Route::get('/', function () {
     return view('pages.home');
@@ -22,12 +23,22 @@ Route::get('/product/code', function () {
     return view('pages.itemProduct');
 });
 
-Route::get('/signup', [UserController::class, 'signupForm'])->name('signup');
+Route::get('/signup', function () {
+    return view('pages.signup');
+})->name('signup');
 Route::post('/signup', [UserController::class, 'signupPost']);
-Route::get('/signup/verify', function () {
-    return view('pages.signupVerify');
-})->name('verify');
+
+Route::get('/signup/verify', [UserController::class, 'verifyForm'])->name('verify');
 Route::post('/signup/verify', [UserController::class, 'VerifyCode'])->name('signup.verify');
+Route::get('/signup/verify/resend', [UserController::class, 'resendCode'])->name('signup.resend');
+
+
+Route::get('/login', function () {
+    return view('pages.login');
+})->name('login');
+Route::post('/login', [UserController::class, 'loginPost']);
+
+
 
 // Route::get('/mail', function () {
 //     return view('mail.mail');

@@ -58,16 +58,39 @@ class SignupRequest extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        $user = User::where('email', $this->input('email'))->first();
 
-        // cek apakah email sudah terdaftar dan belum aktif
-        // if ($validator->errors()->first('email') && !$user->tokenActivation->first()->is_active) {
-        //     throw new ValidationException($validator, redirect(to: '/signup/verify', headers: [
-        //         'email' => $this->input('email'),
-        //         'name' => $this->input('name'),
-        //         'password' => $this->input('password')
-        //     ]));
-        // }
+
+
+        $user = User::where('email', $this->input('email'))->first();
+        // cek apakah email sudah terdaftar tapi belum aktif
+        if ($validator->errors()->first('email') && $user && !$user->tokenActivation->first()->is_active) {
+            session([
+                'email' => $user->email,
+                'tokenActivation' => $user->token
+            ]);
+
+            $user->update([
+                'name' => $this->input('name'),
+                'password' => bcrypt($this->input('password'))
+            ]);
+
+
+            $tokenActivation = $user->tokenActivation->first();
+
+            if ($tokenActivation) {
+
+                $tokenActivation->update([
+                    'token' => mt_rand(100000, 999999), // random angka 6 digit
+                    'expired' => now()->addMinutes(7),
+                    'is_active' => false
+                ]);
+
+                $time = $tokenActivation->expired;
+                throw new ValidationException($validator, redirect()->route('verify', headers: [
+                    'time' => $time
+                ]));
+            }
+        }
 
         // cek email sudah terdaftar dan aktif
         return redirect()

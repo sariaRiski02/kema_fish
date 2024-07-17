@@ -15,9 +15,9 @@ class SignupVerify extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $token;
-    private $email;
-    private $name;
+    public $token;
+    public $email;
+    public $name;
     /**
      * Create a new message instance.
      */
