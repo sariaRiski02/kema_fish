@@ -20,10 +20,10 @@
         </a>
     </div>
     <div class="flex items-center justify-center w-1/4">
-        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
+        <a href="{{ route('signin') }}"
             class="flex items-center justify-center text-white font-medium rounded-lg text-sm px-5 py-2 text-center gap-2">
             <img src="{{ asset('/assets/icon/user_alt_fill.svg') }}" alt="">
-        </button>
+        </a>
     </div>
 
 </div>

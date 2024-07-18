@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use App\Mail\SignupVerify;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
-use Illuminate\Database\Eloquent\Casts\Json;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Database\Eloquent\Casts\Json;
 
 class UserController extends Controller
 {
@@ -136,20 +138,20 @@ class UserController extends Controller
     public function loginPost(LoginRequest $request)
     {
         $data = $request->validated();
-
+        // dd($data);
         $user = User::where('email', $data['email'])->first();
 
-        $password  = password_verify($data['password'], $user->password);
-        $email = $user->email == $data['email'];
-
-        $validation = $password && $email;
-        if (!$validation) {
-            return redirect()->route('login')->withErrors([
-                'errors' => 'Email atau password salah'
-            ]);
+        if (!$user && !Hash::check($data["password"], $user->password)) {
+            return redirect()->route('signin')
+                ->withErrors([
+                    "errors" => "Email Atau Password Salah"
+                ])
+                ->onlyInput('email');
         }
-
-        auth()->login($user);
+        session([
+            'email' => $user->email,
+            'token' => $user->token
+        ]);
 
         return redirect()->route('home');
     }

@@ -26,6 +26,9 @@ Proyek ini masih dalam tahap pengembangan. Banyak bagian kode yang belum dioptim
 -   Memperbaiki bug dan mengoptimalkan kode.
 -   Menambahkan fitur-fitur baru untuk meningkatkan fungsionalitas website.
 -   Mengembangkan fitur e-commerce untuk memudahkan penjualan alat-alat pancing secara online.
+-   Meningkatkan desain dan tata letak website untuk meningkatkan pengalaman pengguna.
+-   Menggunakan livewire untuk meningkatkan interaktivitas website.
+-   Menambahkan fitur-fitur keamanan untuk melindungi data pengguna.
 
 Terima kasih atas ketertarikan Anda pada proyek saya. Nantikan pembaruan selanjutnya!
 

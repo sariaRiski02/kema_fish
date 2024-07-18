@@ -14,7 +14,4 @@
 
 @include('components.product')
 
-{{-- modal authentication --}}
-@include('components.login')
-
 @endsection

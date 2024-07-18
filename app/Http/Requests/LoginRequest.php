@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LoginRequest extends FormRequest
@@ -24,6 +25,25 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'email'],
             'password' => ['required', 'min:6']
+        ];
+    }
+
+
+    public function failedValidation(Validator $validation)
+    {
+        return redirect()
+            ->route('signin')
+            ->withInput()
+            ->withErrors($validation);
+    }
+
+    public function message()
+    {
+        return [
+            "email.required" => 'Email Harus diisi dong!!',
+            "email.email" => 'Waduh..! bukan format email',
+            "password.required" => 'Password Harus diisi dong!!',
+            "password.min" => 'Wah..! Password minimal 6 char'
         ];
     }
 }

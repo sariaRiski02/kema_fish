@@ -41,7 +41,7 @@ class SignupRequest extends FormRequest
 
         return  [
             'name.required' => 'Namanya Harus diisi ya..!',
-            'name. string' => 'Namanya Harus berupa string ya..!',
+            'name.string' => 'Namanya Harus berupa string ya..!',
             'name.max' => 'Namanya maksimal 255 karakter ya..!',
             'name.min' => 'Namanya minimal 4 karakter ya..!',
             'email.required' => 'Email Jangan lupa diisi ya..!',
@@ -84,11 +84,7 @@ class SignupRequest extends FormRequest
                     'expired' => now()->addMinutes(7),
                     'is_active' => false
                 ]);
-
-                $time = $tokenActivation->expired;
-                throw new ValidationException($validator, redirect()->route('verify', headers: [
-                    'time' => $time
-                ]));
+                throw new ValidationException($validator, redirect()->route('verify'));
             }
         }
 
