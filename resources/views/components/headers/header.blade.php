@@ -21,6 +21,10 @@
 
         <div class="flex items-center justify-center gap-5" id="feature">
 
+
+            @if (session()->has('token','email'))
+
+
             {{-- cart --}}
             <div class="flex items-center justify-center" id="cart">
                 <a href="{{ route('cart') }}">
@@ -32,7 +36,7 @@
             <div class="flex items-center justify-center font-thin" id="barrier">
                 <span class="text-xl font-weight-light m-0 p-0">|</span>
             </div>
-
+            @endif
             {{-- maps --}}
             <div class="flex items-center justify-center" id="maps">
                 <a href="#" id="maps"
@@ -43,6 +47,8 @@
                     </span>
                 </a>
             </div>
+
+            @if (!session()->has('token', 'email'))
 
             {{-- signin --}}
             <div class="flex items-center justify-center" id="signin">
@@ -60,13 +66,12 @@
                     Daftar
                 </a>
             </div>
-
+            @endif
 
 
             {{-- after login --}}
-
+            @if (session()->has('token','email'))
             {{-- notification --}}
-
             <div class="bg-white border-gray-200 dark:bg-gray-900" id="notification">
                 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
                     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -126,6 +131,7 @@
 
             {{-- end notification --}}
 
+
             {{-- user --}}
             <div class="bg-white border-gray-200 dark:bg-gray-900" id="user">
                 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
@@ -165,6 +171,7 @@
             </div>
             {{-- end user --}}
 
+            @endif
 
         </div>
     </div>

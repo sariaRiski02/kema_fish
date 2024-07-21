@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\authMiddleware;
 use App\Http\Middleware\UserMiddleware;
 use App\Livewire\SignupLivewire;
 use App\Livewire\UserLivewire;
@@ -22,20 +23,29 @@ Route::get('/product/code', function () {
     return view('pages.itemProduct');
 });
 
-Route::get('/signup', function () {
-    return view('pages.signup');
-})->name('signup');
-Route::post('/signup', [UserController::class, 'signupPost']);
+
+
+
+
+Route::middleware([authMiddleware::class])->group(function () {
+
+    Route::get('/signup', function () {
+        return view('pages.signup');
+    })->name('signup');
+    Route::post('/signup', [UserController::class, 'signupPost']);
+
+    Route::get('/signin', function () {
+        return view('pages.signin');
+    })->name('signin');
+    Route::post('/signin', [UserController::class, 'loginPost'])->name('login.post');
+});
+
+
+
 
 Route::get('/signup/verify', [UserController::class, 'verifyForm'])->name('verify');
 Route::post('/signup/verify', [UserController::class, 'VerifyCode'])->name('signup.verify');
 Route::get('/signup/verify/resend', [UserController::class, 'resendCode'])->name('signup.resend');
-
-
-Route::get('/signin', function () {
-    return view('pages.signin');
-})->name('signin');
-Route::post('/signin', [UserController::class, 'loginPost'])->name('login.post');
 
 
 Route::middleware([UserMiddleware::class])->group(function () {
@@ -44,6 +54,4 @@ Route::middleware([UserMiddleware::class])->group(function () {
     })->name('cart');
 });
 
-// Route::get('/mail', function () {
-//     return view('mail.mail');
-// });
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');

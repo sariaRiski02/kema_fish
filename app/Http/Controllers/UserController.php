@@ -113,7 +113,7 @@ class UserController extends Controller
         }
 
         $user = User::where('email', $sessionEmail)->first();
-        $Token_verify = $user->tokenActivation()->update([
+        $user->tokenActivation()->update([
             'token' => mt_rand(100000, 999999), // random angka 6 digit
             'expired' => now()->addMinutes(7)
         ]);
@@ -153,6 +153,13 @@ class UserController extends Controller
             'token' => $user->token
         ]);
 
+        return redirect()->route('home');
+    }
+
+
+    public function logout()
+    {
+        session()->flush();
         return redirect()->route('home');
     }
 }

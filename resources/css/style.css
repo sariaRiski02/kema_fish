@@ -75,6 +75,10 @@
         
     }
 
+    #signin, #signup{
+        display: none;
+    }
+
     #text-product{
         font-size: 11px;
         
@@ -125,3 +129,5 @@
             flex-direction: column;
         }
     }
+
+
