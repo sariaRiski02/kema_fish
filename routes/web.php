@@ -1,12 +1,15 @@
 <?php
 
+use App\Models\User;
+use GuzzleHttp\Psr7\Request;
+use App\Livewire\UserLivewire;
+use App\Livewire\SignupLivewire;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Middleware\authMiddleware;
 use App\Http\Middleware\UserMiddleware;
-use App\Livewire\SignupLivewire;
-use App\Livewire\UserLivewire;
-use GuzzleHttp\Psr7\Request;
+use App\Http\Controllers\UserController;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
     return view('pages.home');
@@ -55,3 +58,10 @@ Route::middleware([UserMiddleware::class])->group(function () {
 });
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+
+Route::get('/auth/google/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('/auth/google/callback', [UserController::class, 'googleCallback']);

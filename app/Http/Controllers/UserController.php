@@ -11,6 +11,7 @@ use App\Http\Requests\SignupRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Database\Eloquent\Casts\Json;
 
 class UserController extends Controller
@@ -133,8 +134,6 @@ class UserController extends Controller
         return redirect()->route('verify');
     }
 
-
-
     public function loginPost(LoginRequest $request)
     {
         $data = $request->validated();
@@ -156,6 +155,37 @@ class UserController extends Controller
         return redirect()->route('home');
     }
 
+    // login with google
+    public function googleCallback()
+    {
+        $userGoogle = Socialite::driver('google')->user();
+
+        $userExist = User::where('email', $userGoogle->email)->first();
+        if ($userExist) {
+            return redirect()->route('signin')
+                ->withErrors([
+                    "errors" => "Email Sudah Terdaftar"
+                ]);
+        }
+        $user = User::updateOrCreate([
+            'name' => $userGoogle->name,
+            'email' => $userGoogle->email,
+            'password' => Hash::make($userGoogle->name . "KemaFish")
+        ]);
+
+        $user->tokenActivation()->create([
+            'token' => mt_rand(100000, 999999), // random angka 6 digit
+            'is_active' => true,
+            'expired' => now()->addMinutes(7)
+        ]);
+
+        session([
+            'email' => $user->email,
+            'token' => $user->token
+        ]);
+
+        return redirect()->route('home');
+    }
 
     public function logout()
     {
