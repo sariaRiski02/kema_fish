@@ -2,10 +2,39 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Address extends Model
 {
     use HasFactory;
+
+    public $table = 'address';
+    public $timestamps = true;
+    public $incrementing = false;
+    protected $primaryKey = 'id';
+    protected $keyType = 'string';
+
+    protected $fillable = [
+        'user_id',
+        'address',
+        'city',
+        'province',
+        'postal_code',
+        'phone',
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->{$model->getKeyName()} = (string) Str::uuid();
+        });
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 }

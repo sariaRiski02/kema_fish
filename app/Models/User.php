@@ -71,4 +71,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Token_Activation::class, 'id_user', 'id');
     }
+
+    public function address()
+    {
+        return $this->hasMany(Address::class, 'id_user', 'id');
+    }
 }

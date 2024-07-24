@@ -57,7 +57,7 @@ Route::middleware([UserMiddleware::class])->group(function () {
     })->name('cart');
 });
 
-Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout')->middleware([UserMiddleware::class]);
 
 
 Route::get('/auth/google/redirect', function () {
@@ -65,3 +65,8 @@ Route::get('/auth/google/redirect', function () {
 });
 
 Route::get('/auth/google/callback', [UserController::class, 'googleCallback']);
+
+
+// update
+
+Route::post('/settings/update', [UserController::class, 'updateUser'])->name('settings.update')->middleware([UserMiddleware::class]);

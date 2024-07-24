@@ -1,6 +1,5 @@
 <nav class="fixed z-40 top-0 right-0 left-0 bg-white  dark:bg-gray-900 py-5">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-4 gap-2">
-
         <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="{{ asset('assets/logo/blue.png') }}" class="h-8" alt="Flowbite Logo" />
             <span class="self-center text-3xl whitespace-nowrap

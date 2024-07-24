@@ -9,6 +9,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\UpdateUserRequest;
 use Laravel\Socialite\Facades\Socialite;
 
 
@@ -185,5 +186,13 @@ class UserController extends Controller
     {
         session()->flush();
         return redirect()->route('home');
+    }
+
+    public function updateUser(Request $request)
+    {
+        $data = $request;
+        $user = User::where('email', session('email'))->first();
+        $user->update($user->toArray());
+        return redirect()->route('settings');
     }
 }
