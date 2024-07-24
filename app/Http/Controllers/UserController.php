@@ -4,15 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Mail\SignupVerify;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
-use Illuminate\Database\Eloquent\Casts\Json;
+
 
 class UserController extends Controller
 {
@@ -59,11 +57,8 @@ class UserController extends Controller
         if (!$result) {
             return redirect()->route('signup');
         }
-
         $user = User::where('email', $sessionEmail)->first();
         $Token_verify = $user->tokenActivation->first();
-
-
         return view('pages.signupVerify', [
             'time' => $Token_verify->expired,
         ]);
@@ -137,10 +132,8 @@ class UserController extends Controller
     public function loginPost(LoginRequest $request)
     {
         $data = $request->validated();
-        // dd($data);
         $user = User::where('email', $data['email'])->first();
-
-        if (!$user && !Hash::check($data["password"], $user->password)) {
+        if (!$user || !Hash::check($data["password"], $user->password)) {
             return redirect()->route('signin')
                 ->withErrors([
                     "errors" => "Email Atau Password Salah"
@@ -162,26 +155,27 @@ class UserController extends Controller
 
         $userExist = User::where('email', $userGoogle->email)->first();
         if ($userExist) {
-            return redirect()->route('signin')
-                ->withErrors([
-                    "errors" => "Email Sudah Terdaftar"
-                ]);
+            session([
+                'email' => $userExist->email,
+                'token' => $userExist->token
+            ]);
+            return redirect()->route('home');
+        } else {
+            $user = User::create([
+                'name' => $userGoogle->name,
+                'email' => $userGoogle->email,
+                'password' => Hash::make($userGoogle->name . "KemaFish")
+            ]);
+            session([
+                'email' => $user->email,
+                'token' => $user->token
+            ]);
         }
-        $user = User::updateOrCreate([
-            'name' => $userGoogle->name,
-            'email' => $userGoogle->email,
-            'password' => Hash::make($userGoogle->name . "KemaFish")
-        ]);
 
         $user->tokenActivation()->create([
             'token' => mt_rand(100000, 999999), // random angka 6 digit
             'is_active' => true,
             'expired' => now()->addMinutes(7)
-        ]);
-
-        session([
-            'email' => $user->email,
-            'token' => $user->token
         ]);
 
         return redirect()->route('home');

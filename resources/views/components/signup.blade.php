@@ -138,18 +138,11 @@
 
     </div>
     <div class="flex justify-center items-center w-full  gap-1">
-        <a href="#" class="w-full">
+        <a href="/auth/google/redirect" class="w-full">
             <div class="w-full border rounded-md flex gap-2 py-1 justify-center items-center">
                 <img src="{{ asset('/assets/icon/google.svg') }}" alt="google" class="w-4 h-4" />
                 <span class="text-sm font-outfit font-medium text-gray-900 dark:text-white">
                     Google</span>
-            </div>
-        </a>
-        <a href="#" class="w-full">
-            <div class="w-full border rounded-md flex gap-2 py-1 justify-center items-center">
-                <img src="{{ asset('/assets/icon/facebook.svg') }}" alt="google" class="w-4 h-4" />
-                <span class="text-sm font-outfit font-medium text-gray-900 dark:text-white">
-                    Facebook</span>
             </div>
         </a>
     </div>

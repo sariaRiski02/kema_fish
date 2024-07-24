@@ -22,8 +22,6 @@
         <div class="flex items-center justify-center gap-5" id="feature">
 
 
-            @if (session()->has('token','email'))
-
 
             {{-- cart --}}
             <div class="flex items-center justify-center" id="cart">
@@ -36,7 +34,8 @@
             <div class="flex items-center justify-center font-thin" id="barrier">
                 <span class="text-xl font-weight-light m-0 p-0">|</span>
             </div>
-            @endif
+
+
             {{-- maps --}}
             <div class="flex items-center justify-center" id="maps">
                 <a href="#" id="maps"
@@ -48,8 +47,9 @@
                 </a>
             </div>
 
-            @if (!session()->has('token', 'email'))
 
+
+            @GuestCustom
             {{-- signin --}}
             <div class="flex items-center justify-center" id="signin">
                 <a href="{{ route('signin') }}"
@@ -66,11 +66,11 @@
                     Daftar
                 </a>
             </div>
-            @endif
+            @endGuestCustom
 
 
             {{-- after login --}}
-            @if (session()->has('token','email'))
+            @AuthCustom
             {{-- notification --}}
             <div class="bg-white border-gray-200 dark:bg-gray-900" id="notification">
                 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
@@ -113,7 +113,7 @@
                                 </span>
                                 <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">
                                     Barang yang anda simpan dikeranjang sudah habis
-                                </span>
+                                    zz </span>
                             </div>
                             <div class="px-4 py-3">
                                 <span class="block text-lg font-bold text-yellow-500 dark:text-white">
@@ -160,7 +160,7 @@
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">settings</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('logout') }}"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
                                         out</a>
                                 </li>
@@ -171,7 +171,7 @@
             </div>
             {{-- end user --}}
 
-            @endif
+            @endAuthCustom
 
         </div>
     </div>
