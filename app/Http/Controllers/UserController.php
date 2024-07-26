@@ -188,11 +188,46 @@ class UserController extends Controller
         return redirect()->route('home');
     }
 
-    public function updateUser(Request $request)
+    public function updateUserPersonal(Request $request)
     {
-        $data = $request;
-        $user = User::where('email', session('email'))->first();
-        $user->update($user->toArray());
+        $data = $request->validate([
+            'first_name' => 'required|string|max:255|min:4',
+            'last_name' => 'required|string|max:255|min:4',
+        ]);
+
+        User::where('email', session('email'))->update([
+            'name' => $data['first_name'] . ' ' . $data['last_name']
+        ]);
         return redirect()->route('settings');
+    }
+
+    public function updateUserPassword(Request $request)
+    {
+        $data = $request->validate([
+            'current_password' => 'required|string|min:6',
+            'password' => 'required|string|min:6|confirmed'
+        ]);
+
+        $user = User::where('email', session('email'))->first();
+        if (!Hash::check($data['current_password'], $user->password)) {
+            return redirect()->route('settings')->withErrors([
+                'current_password' => 'Password yang anda masukkan salah'
+            ]);
+        }
+        $user->update([
+            'password' => bcrypt($data['password'])
+        ]);
+        return redirect()->route('settings');
+    }
+    public function updateUserContact(Request $request)
+    {
+        $data = $request->validate([
+            'phone' => 'required|string|max:255|min:4',
+            'email' => 'required|string|max:255|min:4',
+        ]);
+    }
+
+    public function updateUserAddress(Request $request)
+    {
     }
 }

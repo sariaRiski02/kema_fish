@@ -68,5 +68,16 @@ Route::get('/auth/google/callback', [UserController::class, 'googleCallback']);
 
 
 // update
+Route::middleware([UserMiddleware::class])->group(function () {
+    Route::post('/settings/updateUser', [UserController::class, 'updateUserPersonal'])->name('settings.update.personal');
 
-Route::post('/settings/update', [UserController::class, 'updateUser'])->name('settings.update')->middleware([UserMiddleware::class]);
+    Route::post('/settings/updatePassword', [UserController::class, 'updateUserPersonal'])->name('settings.update.password');
+
+    Route::post('/settings/updateContact', [
+        UserController::class, 'updateUserContact'
+    ])->name('settings.update.contact');
+
+    Route::post('/settings/updateAddress', [
+        UserController::class, 'updateUserAddress'
+    ])->name('settings.update.address');
+});
