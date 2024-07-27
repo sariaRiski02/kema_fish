@@ -35,7 +35,8 @@
         </button>
     </form>
     {{-- Form update password --}}
-    <form action="{{ route('settings.update.password') }}">
+    <form action="{{ route('settings.update.password') }}" method="POST">
+        @csrf
         <div class="py-5">
             Ubah Password
         </div>
@@ -86,17 +87,7 @@
             Kontak
         </div>
         <div class="grid gap-6 mb-6 md:grid-cols-2">
-            <div>
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Email
-                </label>
-                <input type="email" id="email" name="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('email') border-red-500 @enderror"
-                    placeholder="john@example.com" value="{{ old('email') }}" />
-                @error('email')
-                <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
-                @enderror
-            </div>
+
             <div>
                 <label for="telephone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No
                     Hp</label>
@@ -144,10 +135,10 @@
                 @enderror
             </div>
             <div>
-                <label for="district" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label for="subdistrict" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Kecamatan
                 </label>
-                <input type="text" id="district" name="district"
+                <input type="text" id="subdistrict" name="subdistrict"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('district') border-red-500 @enderror"
                     placeholder="Cibeunying Kaler" required value="{{ old('district') }}" />
                 @error('district')

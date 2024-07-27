@@ -208,6 +208,10 @@ class UserController extends Controller
             'password' => 'required|string|min:6|confirmed'
         ]);
 
+        if ($request->fails()) {
+            return redirect()->route('settings')->withErrors($request->errors())->withInput();
+        }
+
         $user = User::where('email', session('email'))->first();
         if (!Hash::check($data['current_password'], $user->password)) {
             return redirect()->route('settings')->withErrors([
@@ -219,15 +223,51 @@ class UserController extends Controller
         ]);
         return redirect()->route('settings');
     }
+
+
     public function updateUserContact(Request $request)
     {
         $data = $request->validate([
-            'phone' => 'required|string|max:255|min:4',
-            'email' => 'required|string|max:255|min:4',
+            'phone' => 'required|string|max:255|min:4'
+        ]);
+
+        if ($request->fails()) {
+            // Validation failed
+            return redirect()->back()->withErrors($request->errors())->withInput();
+        }
+
+        $user = User::where('email', session('email'));
+
+        $user->contact()->create([
+            'email' => session('email'),
+            'phone' => $data['phone']
         ]);
     }
 
     public function updateUserAddress(Request $request)
     {
+        $data = $request->validate([
+            'city' => 'required|string|max:255|min:4',
+            'province' => 'required|string|max:255|min:4',
+            'subdistrict' => 'required|string|max:255|min:4',
+            'village' => 'required|string|max:255|min:4',
+            'postal_code' => 'required|string|max:255|min:4',
+            'address_details' => 'string|max:255',
+        ]);
+
+        if ($request->fails()) {
+            // Validation failed
+            return redirect()->back()->withErrors($request->errors())->withInput();
+        }
+
+        $user = User::where('email', session('email'));
+        $user->address()->create([
+            'city' => $data['city'],
+            'province' => $data['province'],
+            'subdistrict' => $data['subdistrict'],
+            'vilage' => $data['village'],
+            'postal_code' => $data['postal_code'],
+            'address_details' => $data['address_details'],
+        ]);
     }
 }
