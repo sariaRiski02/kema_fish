@@ -90,7 +90,8 @@
 
             <div>
                 <label for="telephone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No
-                    Hp</label>
+                    Hp
+                </label>
                 <input type="tel" id="telephone" name="phone"
                     class="border bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('phone') border-red-500 @enderror"
                     placeholder="123-45-678" value="{{ old('phone') }}" />
@@ -139,19 +140,31 @@
                     Kecamatan
                 </label>
                 <input type="text" id="subdistrict" name="subdistrict"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('district') border-red-500 @enderror"
-                    placeholder="Cibeunying Kaler" required value="{{ old('district') }}" />
-                @error('district')
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('subdistrict') border-red-500 @enderror"
+                    placeholder="Cibeunying Kaler" required value="{{ old('subdistrict') }}" />
+                @error('subdistrict')
                 <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
                 @enderror
             </div>
             <div>
                 <label for="village" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Desa/Kelurahan</label>
+                    Desa/Kelurahan
+                </label>
                 <input type="text" id="village" name="village"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('village') border-red-500 @enderror"
                     placeholder="Cigadung" required value="{{ old('village') }}" />
                 @error('village')
+                <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+            <div>
+                <label for="postal_code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Kode Pos
+                </label>
+                <input type="text" id="postal_code" name="postal_code"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('postal_code') border-red-500 @enderror"
+                    placeholder="40191" required value="{{ old('postal_code') }}" />
+                @error('postal_code')
                 <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
                 @enderror
             </div>
@@ -172,4 +185,5 @@
             Simpan Alamat
         </button>
     </form>
+
 </div>

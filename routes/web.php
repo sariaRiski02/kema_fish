@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/settings', function () {
     return view('pages.setting');
-})->name('settings');
+})->name('settings')->middleware([UserMiddleware::class]);
 
 
 Route::get('/product/code', function () {

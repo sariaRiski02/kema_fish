@@ -205,12 +205,8 @@ class UserController extends Controller
     {
         $data = $request->validate([
             'current_password' => 'required|string|min:6',
-            'password' => 'required|string|min:6|confirmed'
+            'new_password' => 'required|string|min:6|confirmed'
         ]);
-
-        if ($request->fails()) {
-            return redirect()->route('settings')->withErrors($request->errors())->withInput();
-        }
 
         $user = User::where('email', session('email'))->first();
         if (!Hash::check($data['current_password'], $user->password)) {
@@ -218,8 +214,8 @@ class UserController extends Controller
                 'current_password' => 'Password yang anda masukkan salah'
             ]);
         }
-        $user->update([
-            'password' => bcrypt($data['password'])
+        $result = $user->update([
+            'password' => bcrypt($data['new_password'])
         ]);
         return redirect()->route('settings');
     }
@@ -227,21 +223,27 @@ class UserController extends Controller
 
     public function updateUserContact(Request $request)
     {
+
+
         $data = $request->validate([
             'phone' => 'required|string|max:255|min:4'
         ]);
 
-        if ($request->fails()) {
-            // Validation failed
-            return redirect()->back()->withErrors($request->errors())->withInput();
-        }
 
-        $user = User::where('email', session('email'));
+        $user = User::where('email', session('email'))->first();
+
+        if ($user->contact()->exists()) {
+            $user->contact()->update([
+                'no_hp' => $data['phone']
+            ]);
+            return redirect()->route('settings');
+        }
 
         $user->contact()->create([
             'email' => session('email'),
-            'phone' => $data['phone']
+            'no_hp' => $data['phone']
         ]);
+        return redirect()->route('settings');
     }
 
     public function updateUserAddress(Request $request)
@@ -255,19 +257,16 @@ class UserController extends Controller
             'address_details' => 'string|max:255',
         ]);
 
-        if ($request->fails()) {
-            // Validation failed
-            return redirect()->back()->withErrors($request->errors())->withInput();
-        }
-
-        $user = User::where('email', session('email'));
+        $user = User::where('email', session('email'))->first();
         $user->address()->create([
             'city' => $data['city'],
             'province' => $data['province'],
             'subdistrict' => $data['subdistrict'],
             'vilage' => $data['village'],
             'postal_code' => $data['postal_code'],
-            'address_details' => $data['address_details'],
+            'description' => $data['address_details'],
         ]);
+
+        return redirect()->route('settings');
     }
 }

@@ -10,19 +10,19 @@ class Address extends Model
 {
     use HasFactory;
 
-    public $table = 'address';
+    public $table = 'addresses';
     public $timestamps = true;
     public $incrementing = false;
     protected $primaryKey = 'id';
     protected $keyType = 'string';
 
     protected $fillable = [
-        'user_id',
-        'address',
         'city',
+        'vilage',
+        'description',
         'province',
         'postal_code',
-        'phone',
+        'subdistrict',
     ];
 
     protected static function boot()

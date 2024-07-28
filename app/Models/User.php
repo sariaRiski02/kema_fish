@@ -4,9 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Doctrine\Common\Lexer\Token;
 use Ramsey\Uuid\Uuid;
+use App\Models\Contact;
 use Illuminate\Support\Str;
+use Doctrine\Common\Lexer\Token;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
