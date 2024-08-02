@@ -82,4 +82,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Contact::class, 'id_user', 'id');
     }
+
+    public function  cart()
+    {
+        return $this->hasMany(Cart::class, 'id_user', 'id');
+    }
 }

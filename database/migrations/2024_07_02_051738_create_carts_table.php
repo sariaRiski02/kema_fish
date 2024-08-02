@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('id_user')->nullable(false);
             $table->uuid('id_product')->nullable(false);
+            $table->integer('quantity')->nullable(false);
             $table->bigInteger('amount_price')->nullable(false);
             $table->text('description');
             $table->timestamps();

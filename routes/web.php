@@ -10,10 +10,9 @@ use App\Http\Middleware\authMiddleware;
 use App\Http\Middleware\UserMiddleware;
 use App\Http\Controllers\UserController;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\ProductController;
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+Route::get('/', [ProductController::class, 'product'])->name('home');
 
 
 
