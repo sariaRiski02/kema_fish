@@ -223,8 +223,6 @@ class UserController extends Controller
 
     public function updateUserContact(Request $request)
     {
-
-
         $data = $request->validate([
             'phone' => 'required|string|max:255|min:4'
         ]);
@@ -266,7 +264,6 @@ class UserController extends Controller
             'postal_code' => $data['postal_code'],
             'description' => $data['address_details'],
         ]);
-
         return redirect()->route('settings');
     }
 }

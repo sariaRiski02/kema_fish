@@ -14,28 +14,35 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name')->nullable();
+            $table->string('name')->nullable(false);
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->uuid('token');
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('password')->nullable(false);
             $table->timestamps();
         });
 
-        Schema::create('tokens_activation', function (Blueprint $table) {
+        Schema::create('tokens_activations', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignUuid('id_user')->constrained('users')->nullable(false);
             $table->string('token');
+            $table->dateTime('expired_at');
             $table->boolean('is_active')->default(false);
-            $table->dateTime('expired');
             $table->timestamps();
-            $table->foreignUuid('id_user')->constrained('users');
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('token_sessions', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->foreignUuid('id_user')->constrained('users');
+            $table->boolean('is_session');
+            $table->uuid('token');
+            $table->timestamps();
+        });
+
+        Schema::create('admin', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->timestamps();
         });
 
         Schema::create('sessions', function (Blueprint $table) {
@@ -53,7 +60,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('token_activations');
+        Schema::dropIfExists('token_sessions');
+        Schema::dropIfExists('admin');
         Schema::dropIfExists('sessions');
     }
 };

@@ -17,7 +17,6 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasUuids;
 
-
     public $table = 'users';
     public $timestamps = true;
     public $incrementing = false;
@@ -66,20 +65,5 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function tokenActivation()
-    {
-        return $this->hasMany(Token_Activation::class, 'id_user', 'id');
-    }
-
-    public function address()
-    {
-        return $this->hasMany(Address::class, 'id_user', 'id');
-    }
-
-    public function contact()
-    {
-        return $this->hasMany(Contact::class, 'id_user', 'id');
     }
 }
