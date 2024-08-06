@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('id_user')->constrained('id_user');
+            $table->foreignUuid('id_user')->constrained('users');
             $table->foreignUuid('id_product')->constrained('products');
             $table->tinyInteger('product_quantity');
             $table->bigInteger('total_amount');

@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Category;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Address;
 use Illuminate\Database\Seeder;
-use Database\Seeders\ProductSeeder;
-use Database\Seeders\CategorySeeder;
+use Database\Seeders\UserSeeder;
+use Database\Seeders\ContactSeeder;
 use Symfony\Component\String\ByteString;
 
 class DatabaseSeeder extends Seeder
@@ -18,8 +16,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            ProductSeeder::class,
-            CategorySeeder::class,
+            UserSeeder::class,
+            ContactSeeder::class,
+            AddressSeeder::class,
         ]);
     }
 }
