@@ -12,6 +12,7 @@ use Database\Seeders\AddressSeeder;
 use Database\Seeders\ContactSeeder;
 use Database\Seeders\ProductSeeder;
 use Database\Seeders\CategorySeeder;
+use Database\Seeders\TransactionSeeder;
 use Symfony\Component\String\ByteString;
 
 class DatabaseSeeder extends Seeder
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ProductSeeder::class,
             CartSeeder::class,
+            TransactionSeeder::class
         ]);
     }
 }

@@ -9,6 +9,8 @@ use App\Models\Admin;
 use App\Models\Address;
 use App\Models\Contact;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Transaction;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -36,9 +38,9 @@ class RelationModelTest extends TestCase
 
     public function testAdminAndCategory()
     {
-        $admin = Admin::first();
-        $category = $admin->category()->get()->first();
-        $this->assertNotNull($category);
+        $category = Category::first();
+        $admin = $category->admin()->first();
+        $this->assertNotNull($admin);
         $this->assertSame($category->id_admin, $admin->id);
     }
 
@@ -72,5 +74,22 @@ class RelationModelTest extends TestCase
         $product = $cart->product()->first();
         $this->assertNotNull($product);
         $this->assertSame($cart->id_product, $product->id);
+    }
+
+    public function testUserAndTransaction()
+    {
+        $transaction = Transaction::first();
+        $user = $transaction->user()->first();
+        $this->assertNotNull($user);
+
+        $this->assertSame($transaction->id_user, $user->id);
+    }
+
+    public function testProductAndTransaction()
+    {
+        $transaction = Transaction::first();
+        $product = $transaction->product()->first();
+        $this->assertNotNull($product);
+        $this->assertSame($transaction->id_product, $product->id);
     }
 }
