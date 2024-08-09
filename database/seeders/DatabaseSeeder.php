@@ -2,13 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Category;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Admin;
+use App\Models\Address;
 use Illuminate\Database\Seeder;
+use Database\Seeders\CartSeeder;
+use Database\Seeders\UserSeeder;
+use Database\Seeders\AdminSeeder;
+use Database\Seeders\AddressSeeder;
+use Database\Seeders\ContactSeeder;
 use Database\Seeders\ProductSeeder;
 use Database\Seeders\CategorySeeder;
+use Database\Seeders\TransactionSeeder;
 use Symfony\Component\String\ByteString;
+use Database\Seeders\Token_sessionSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,8 +24,15 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            ProductSeeder::class,
+            UserSeeder::class,
+            ContactSeeder::class,
+            AddressSeeder::class,
+            AdminSeeder::class,
             CategorySeeder::class,
+            ProductSeeder::class,
+            CartSeeder::class,
+            TransactionSeeder::class,
+            Token_sessionSeeder::class,
         ]);
     }
 }

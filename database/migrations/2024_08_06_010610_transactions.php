@@ -13,8 +13,17 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('id_user')->constrained();
-            $table->foreignUuid('id_product')->constrained('transactions');
+            $table->foreignUuid('id_user')->constrained('users');
+            $table->foreignUuid('id_product')->constrained('products');
+            $table->tinyInteger('quantity_product');
+            $table->float('price_product');
+            $table->float('total_amount');
+            $table->enum('status', [
+                'paid',
+                'unpaid',
+                'cencelled'
+            ]);
+            $table->timestamps();
         });
     }
 
@@ -23,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('transactions');
     }
 };
