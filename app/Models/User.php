@@ -94,4 +94,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class, 'id_user', 'id');
     }
+
+    public function token_session()
+    {
+        return $this->hasMany(Token_session::class, 'id_user', 'id');
+    }
 }
