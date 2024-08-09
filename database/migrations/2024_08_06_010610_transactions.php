@@ -18,7 +18,11 @@ return new class extends Migration
             $table->tinyInteger('quantity_product');
             $table->float('price_product');
             $table->float('total_amount');
-            $table->string('status');
+            $table->enum('status', [
+                'paid',
+                'unpaid',
+                'cencelled'
+            ]);
             $table->timestamps();
         });
     }

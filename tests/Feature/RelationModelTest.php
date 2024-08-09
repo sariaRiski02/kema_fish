@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Address;
@@ -55,5 +56,21 @@ class RelationModelTest extends TestCase
         $category = $product->category()->first();
         $this->assertNotNull($category);
         $this->assertSame($product->id_category, $category->id);
+    }
+
+    public function testUserAndCart()
+    {
+        $user = User::first();
+        $cart = $user->cart()->get()->first();
+        $this->assertNotNull($cart);
+        $this->assertSame($user->id, $cart->id_user);
+    }
+
+    public function testCartAndProduct()
+    {
+        $cart = Cart::first();
+        $product = $cart->product()->first();
+        $this->assertNotNull($product);
+        $this->assertSame($cart->id_product, $product->id);
     }
 }
