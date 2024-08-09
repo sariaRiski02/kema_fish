@@ -59,10 +59,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('token_activations');
+        Schema::dropIfExists('tokens_activations');
         Schema::dropIfExists('token_sessions');
-        Schema::dropIfExists('admin');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('admin');
+        Schema::dropIfExists('users');
     }
 };

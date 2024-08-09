@@ -2,24 +2,23 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Address extends Model
+class Admin extends Model
 {
     use HasFactory;
-
-    protected $table = 'addresses';
-    protected $primaryKey = 'id';
+    protected $table = 'admin';
     protected $typeKey = 'string';
-    public $incrementing = false;
+    protected $primary = 'id';
     public $timestamps = true;
+    public $incrementing = false;
 
 
-    protected $fillable = [
-        'country', 'province', 'district', 'subdistrict', 'village', 'description'
+    protected $hidden = [
+        'password'
     ];
 
     protected static function boot()
@@ -30,8 +29,8 @@ class Address extends Model
         });
     }
 
-    public function user()
+    public function category()
     {
-        return $this->belongsTo(User::class, 'id_user', 'id');
+        return $this->hasMany(Category::class, 'id_admin', "id");
     }
 }

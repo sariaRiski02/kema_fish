@@ -7,31 +7,32 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Address extends Model
+class Category extends Model
 {
     use HasFactory;
 
-    protected $table = 'addresses';
-    protected $primaryKey = 'id';
-    protected $typeKey = 'string';
+    protected $table = 'categories';
+    protected $keyType = 'string';
+    protected $primary = 'id';
     public $incrementing = false;
-    public $timestamps = true;
+    public $timestamps = false;
 
 
     protected $fillable = [
-        'country', 'province', 'district', 'subdistrict', 'village', 'description'
+        'name',
+        'description'
     ];
 
     protected static function boot()
     {
         parent::boot();
         static::creating(function ($model) {
-            $model->{$model->getKeyName()} = (string) Str::uuid();
+            $model->{$model->getkeyName()} = (string) Str::uuid();
         });
     }
 
-    public function user()
+    public function admin()
     {
-        return $this->belongsTo(User::class, 'id_user', 'id');
+        return $this->belongsTo(admin::class, 'id_admin', 'id');
     }
 }

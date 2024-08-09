@@ -5,7 +5,9 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 
+use App\Models\Address;
 use App\Models\Contact;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -74,5 +76,10 @@ class User extends Authenticatable
     public function address()
     {
         return $this->hasMany(Address::class, 'id_user', 'id');
+    }
+
+    public function category()
+    {
+        return $this->hasMany(Category::class, 'id_user', 'id');
     }
 }

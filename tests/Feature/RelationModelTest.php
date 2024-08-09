@@ -2,9 +2,11 @@
 
 namespace Tests\Feature;
 
-use App\Models\Contact;
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\Admin;
+use App\Models\Address;
+use App\Models\Contact;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -23,16 +25,18 @@ class RelationModelTest extends TestCase
         $this->assertGreaterThan(1, $UserToContact->count());
     }
 
-    public function testUserToAddress()
+    public function testUserAndAddress()
     {
-        $user = User::first();
-        $UserToAddress = $user->address()->get();
-        dd($UserToAddress);
+        $address = Address::first();
+        $user = $address->user()->first();
+        $this->assertNotNull($user);
+    }
 
-
-        // check if relation exist
-        $this->assertNotNull($UserToAddress);
-        // check one to many
-        $this->assertGreaterThan(1, $UserToAddress->count());
+    public function testAdminAndCategory()
+    {
+        $admin = Admin::first();
+        $category = $admin->category()->get()->first();
+        $this->assertNotNull($category);
+        $this->assertSame($category->id_admin, $admin->id);
     }
 }
