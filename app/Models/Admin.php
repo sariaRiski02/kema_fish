@@ -33,4 +33,9 @@ class Admin extends Model
     {
         return $this->hasMany(Category::class, 'id_admin', "id");
     }
+
+    public function product()
+    {
+        return $this->hasMany(Product::class, 'id_admin', 'id');
+    }
 }
