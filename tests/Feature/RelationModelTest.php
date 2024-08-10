@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use session;
 use Tests\TestCase;
 use App\Models\Cart;
 use App\Models\User;
@@ -10,7 +11,9 @@ use App\Models\Address;
 use App\Models\Contact;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Token_activation;
 use App\Models\Transaction;
+use App\Models\Token_session;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -91,5 +94,20 @@ class RelationModelTest extends TestCase
         $product = $transaction->product()->first();
         $this->assertNotNull($product);
         $this->assertSame($transaction->id_product, $product->id);
+    }
+    public function testUserAndToken_session()
+    {
+        $token = Token_session::first();
+        $user = $token->user()->first();
+        $this->assertNotNull($user);
+        $this->assertSame($token->id_user, $user->id);
+    }
+
+    public function testUserAndToken_activation()
+    {
+        $token_activation = Token_activation::first();
+        $user = $token_activation->user()->first();
+        $this->assertNotNull($user);
+        $this->assertSame($token_activation->id_user, $user->id);
     }
 }

@@ -11,6 +11,8 @@ use App\Models\Contact;
 use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
+use App\Models\Token_session;
+use App\Models\Token_activation;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -98,5 +100,10 @@ class User extends Authenticatable
     public function token_session()
     {
         return $this->hasMany(Token_session::class, 'id_user', 'id');
+    }
+
+    public function token_activation()
+    {
+        return $this->hasMany(Token_activation::class, 'id_user', 'id');
     }
 }

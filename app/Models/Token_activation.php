@@ -2,30 +2,33 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Token_session extends Model
+class Token_activation extends Model
 {
     use HasFactory;
 
-    protected $table = 'tokens_session';
+    protected $table = 'tokens_activation';
     protected $keyType = 'string';
     protected $primary = 'id';
     public $timestamps = true;
     public $incrementing = false;
 
+
     protected $fillable = [
-        'is_session',
-        'token'
+        'token',
+        'expired_at',
+        'is_active'
     ];
 
     protected static function boot()
     {
         parent::boot();
         static::creating(function ($model) {
-            $model->{$model->getkeyName()} = (string) Str::uuid();
+            $model->{$model->getkeyName()} = Str::uuid();
         });
     }
 
@@ -33,5 +36,4 @@ class Token_session extends Model
     {
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
-    
 }

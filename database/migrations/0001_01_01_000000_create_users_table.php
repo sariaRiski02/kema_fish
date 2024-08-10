@@ -29,7 +29,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('token_sessions', function (Blueprint $table) {
+        Schema::create('tokens_session', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('id_user')->constrained('users');
             $table->boolean('is_session');
@@ -60,7 +60,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('tokens_activation');
-        Schema::dropIfExists('token_sessions');
+        Schema::dropIfExists('tokens_session');
         Schema::dropIfExists('sessions');
         Schema::dropIfExists('admin');
         Schema::dropIfExists('users');
