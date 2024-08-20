@@ -14,7 +14,8 @@
 
                 <input type="text" id="simple-search"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                     focus:ring-blue-500 focus:border-blue-500 block w-full  p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 font-outfit"
+                     focus:ring-blue-500 focus:border-blue-500 block w-full  p-2  dark:bg-gray-700 
+                     dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 font-outfit"
                     placeholder="Senar, lure, timah dll.." />
             </div>
         </form>
@@ -38,8 +39,9 @@
 
             {{-- maps --}}
             <div class="flex items-center justify-center" id="maps">
-                <a href="#" id="maps"
-                    class="border flex items-center justify-center text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2  text-center gap-2 dark:focus:ring-[#3b5998]/55">
+                <a href="#" id="maps" class="border flex items-center justify-center text-white bg-[#3b5998]
+                     hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 
+                     font-medium rounded-lg text-sm px-5 py-2  text-center gap-2 dark:focus:ring-[#3b5998]/55">
                     <img src="{{ asset('/assets/icon/pin.svg') }}" alt="">
                     <span class="location">
                         Lihat Lokasi
@@ -61,8 +63,8 @@
 
             {{-- signup --}}
             <div class="flex items-center justify-center" id="signup">
-                <a href=""
-                    class=" border bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center text-white">
+                <a href="" class=" border bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none 
+                    focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center text-white">
                     Daftar
                 </a>
             </div>
@@ -76,10 +78,9 @@
                 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
                     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 
-                        <button type="button"
-                            class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white  rounded-lg  border border-[#3b5998"
-                            id="user-menu-button" aria-expanded="false" data-dropdown-toggle="notification-dropdown"
-                            data-dropdown-placement="bottom">
+                        <button type="button" class="inline-flex items-center px-5 py-2 text-sm font-medium text-center text-white 
+                            rounded-lg  border border-[#3b5998" id="user-menu-button" aria-expanded="false"
+                            data-dropdown-toggle="notification-dropdown" data-dropdown-placement="bottom">
                             {{-- logo --}}
                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 21">
@@ -137,32 +138,33 @@
                 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
 
                     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                        <button type="button"
-                            class="flex text-sm border rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                            id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
-                            data-dropdown-placement="bottom">
+                        <button type="button" class="flex text-sm border rounded-full md:me-0 focus:ring-4 focus:ring-gray-300
+                             dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false"
+                            data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                             <span class="sr-only">Open user menu</span>
                             <img class="w-8 h-8 rounded-full" src="{{ asset('/assets/logo/blue.png') }}"
                                 alt="user photo">
                         </button>
                         <!-- Dropdown menu -->
-                        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-                            id="user-dropdown">
+                        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 
+                        rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
                             <div class="px-4 py-3">
                                 <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-                                <span
-                                    class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                                <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">
+                                    name@flowbite.com
+                                </span>
                             </div>
                             <ul class="py-2" aria-labelledby="user-menu-button">
 
                                 <li>
-                                    <a href="/settings"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">settings</a>
+                                    <a href="/settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 
+                                        dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">settings</a>
                                 </li>
                                 <li>
-                                    <a href=""
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                                        out</a>
+                                    <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 
+                                        dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                        Sign out
+                                    </a>
                                 </li>
                             </ul>
                         </div>
