@@ -67,6 +67,7 @@ class RelationModelTest extends TestCase
     {
         $user = User::first();
         $cart = $user->cart()->get()->first();
+
         $this->assertNotNull($cart);
         $this->assertSame($user->id, $cart->id_user);
     }

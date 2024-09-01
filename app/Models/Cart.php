@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,8 +20,8 @@ class Cart extends Model
 
 
     protected $fillable = [
+        'id_product',
         'product_quantity',
-        'total_amount',
     ];
     protected static function boot()
     {
@@ -28,6 +30,11 @@ class Cart extends Model
             $model->{$model->getkeyName()} = (string) Str::uuid();
         });
     }
+
+    protected $with = [
+        'product',
+        'user'
+    ];
 
     public function user()
     {

@@ -1,6 +1,6 @@
 <nav class="fixed z-40 top-0 right-0 left-0 bg-white  dark:bg-gray-900 py-3 border">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-4 gap-2">
-        <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="{{ asset('assets/logo/blue.png') }}" class="h-8" alt="Flowbite Logo" />
             <span class="self-center text-2xl whitespace-nowrap
              dark:text-white font-outfit font-bold color-kema-fish" id="logo">
@@ -11,7 +11,6 @@
         <form class="flex items-center flex-grow-3 mx-auto  ">
             <label for="simple-search" class="sr-only">Search</label>
             <div class="relative w-full">
-
                 <input type="text" id="simple-search"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                      focus:ring-blue-500 focus:border-blue-500 block w-full  p-2  dark:bg-gray-700 
@@ -23,10 +22,11 @@
         <div class="flex items-center justify-center gap-5" id="feature">
 
 
-
+            @auth
+                
             {{-- cart --}}
             <div class="flex items-center justify-center" id="cart">
-                <a href="">
+                <a href="{{ route('cart') }}">
                     <img src="{{ asset('/assets/icon/cart.svg') }}" alt="">
                 </a>
             </div>
@@ -35,11 +35,13 @@
             <div class="flex items-center justify-center font-thin" id="barrier">
                 <span class="text-xl font-weight-light m-0 p-0">|</span>
             </div>
+            @endauth
+
 
 
             {{-- maps --}}
             <div class="flex items-center justify-center" id="maps">
-                <a href="#" id="maps" class="border flex items-center justify-center text-white bg-[#3b5998]
+                <a href="{{ route('location') }}" target="_blank" id="maps" class="border flex items-center justify-center text-white bg-[#3b5998]
                      hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 
                      font-medium rounded-lg text-sm px-5 py-2  text-center gap-2 dark:focus:ring-[#3b5998]/55">
                     <img src="{{ asset('/assets/icon/pin.svg') }}" alt="">
@@ -50,11 +52,10 @@
             </div>
 
 
-
-
+            @guest
             {{-- signin --}}
             <div class="flex items-center justify-center" id="signin">
-                <a href=""
+                <a href="{{ route('signin') }}"
                     class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
                     type="button">
                     Masuk
@@ -63,14 +64,16 @@
 
             {{-- signup --}}
             <div class="flex items-center justify-center" id="signup">
-                <a href="" class=" border bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none 
+                <a href="{{ route('signup') }}" class=" border bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none 
                     focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center text-white">
                     Daftar
                 </a>
             </div>
 
+            @endguest
 
 
+            @auth
             {{-- after login --}}
 
             {{-- notification --}}
@@ -161,7 +164,7 @@
                                         dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">settings</a>
                                 </li>
                                 <li>
-                                    <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 
+                                    <a href="{{ route('signout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 
                                         dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                         Sign out
                                     </a>
@@ -173,6 +176,7 @@
             </div>
             {{-- end user --}}
 
+            @endauth
 
 
         </div>
