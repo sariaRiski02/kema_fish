@@ -16,18 +16,18 @@ class Cart extends Component
         $cart = CartModel::find($idCart);
         $cart->product_quantity++;
         $cart->save();
-        dd($cart->product_quantity);
     }
+
+
     public function decrement($idCart)
     {
         $cart = CartModel::find($idCart);
 
-        if (!$cart->product_quantity > 1) {
-            return redirect()->back();
+        if ($cart->product_quantity <= 1) {
+            return;
         }
         $cart->product_quantity--;
         $cart->save();
-        dd($cart->product_quantity);
     }
 
     public function deleteCart($idCart)
@@ -38,11 +38,11 @@ class Cart extends Component
         }
     }
 
+
     public function render()
     {
         $user = Auth::user();
         $cart = CartModel::where('id_user', $user->id)->get();
-        $temp = [];
         $total = $cart->pluck('product.price')->sum();
 
         return view('livewire.cart', compact('cart', 'total'));
