@@ -2,17 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
+use App\Models\Token_activation;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class ProductSeeder extends Seeder
+class TokenActivationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Product::factory(31)->create();
+        Token_activation::factory(5)->create();
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin;
-use App\Models\Address;
 use Illuminate\Database\Seeder;
 use Database\Seeders\CartSeeder;
 use Database\Seeders\UserSeeder;
@@ -13,8 +11,8 @@ use Database\Seeders\ContactSeeder;
 use Database\Seeders\ProductSeeder;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\TransactionSeeder;
-use Symfony\Component\String\ByteString;
 use Database\Seeders\Token_sessionSeeder;
+use Database\Seeders\TokenActivationSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -33,6 +31,7 @@ class DatabaseSeeder extends Seeder
             CartSeeder::class,
             TransactionSeeder::class,
             Token_sessionSeeder::class,
+            TokenActivationSeeder::class,
         ]);
     }
 }

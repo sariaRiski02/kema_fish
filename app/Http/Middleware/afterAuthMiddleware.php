@@ -3,13 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserMiddleware
+class afterAuthMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,17 +16,9 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-
-        $email = session("email");
-        $token = session("token");
-
-        $user = User::where('email', $email)->first();
-        $usertoken = $user->token ?? 'ErrorToken';
-
-        if (!$user && $usertoken != $token) {
-            return redirect()->route('signin');
+        if (!Auth::check()) {
+            return $next($request);
         }
-
-        return $next($request);
+        return redirect()->route('home');
     }
 }

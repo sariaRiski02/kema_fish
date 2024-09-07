@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class authMiddleware
@@ -16,13 +17,8 @@ class authMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-
-        $EmailSession = session('email');
-        $TokenSession = session('token');
-
-        $user = User::where('email', $EmailSession)->first();
-        if ($user && $user->token == $TokenSession) {
-            return redirect()->route('home');
+        if (!Auth::check()) {
+            return redirect()->route('signin');
         }
         return $next($request);
     }

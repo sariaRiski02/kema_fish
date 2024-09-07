@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignUuid('id_user')->constrained('users');
             $table->foreignUuid('id_product')->constrained('products');
             $table->tinyInteger('product_quantity');
-            $table->bigInteger('total_amount');
             $table->timestamps();
         });
     }

@@ -23,7 +23,6 @@ class CartFactory extends Factory
             'id_user' => User::inRandomOrder()->first()->id,
             'id_product' => Product::inRandomOrder()->first()->id,
             'product_quantity' => rand(1, 14),
-            'total_amount' => rand(40000, 200000),
         ];
     }
 }

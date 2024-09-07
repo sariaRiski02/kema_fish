@@ -10,7 +10,7 @@ class Token_session extends Model
 {
     use HasFactory;
 
-    protected $table = 'token_session';
+    protected $table = 'tokens_session';
     protected $keyType = 'string';
     protected $primary = 'id';
     public $timestamps = true;
@@ -33,4 +33,5 @@ class Token_session extends Model
     {
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
+    
 }

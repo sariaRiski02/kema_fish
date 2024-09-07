@@ -18,7 +18,7 @@
 
 @media (max-width: 870px) {
     
-    #logo, #maps, #barrier, #cart, #user {
+    #logo, #maps, #barrier, #user {
         display: none;
     }
     
@@ -63,6 +63,7 @@
 }
 
 @media screen and (max-width: 460px){
+    
     #product{
         width: 7rem;
         height: 11rem;
@@ -130,4 +131,19 @@
         }
     }
 
+
+    
+    .logo{
+        display: none;
+    }
+
+    @media screen and (max-width: 600px)
+        {
+            #logo{
+                display: none;
+            }
+            .logo{
+                display: flex;
+            }
+        }
 

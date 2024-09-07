@@ -2,29 +2,27 @@
 
 namespace Database\Factories;
 
-use App\Models\Token_session;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Token_session>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Token_activation>
  */
-class Token_sessionFactory extends Factory
+class Token_activationFactory extends Factory
 {
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
-    protected $model = Token_session::class;
-
     public function definition(): array
     {
         return [
             'id_user' => User::inRandomOrder()->first()->id,
-            'is_session' => collect([true, false])->random(),
             'token' => Str::uuid(),
+            'expired_at' => now()->addHour(3),
+            'is_active' => true,
         ];
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name')->nullable(false);
             $table->string('email')->unique();
             $table->string('password')->nullable(false);
+
             $table->timestamps();
         });
 
@@ -29,7 +30,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('token_sessions', function (Blueprint $table) {
+        Schema::create('tokens_session', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('id_user')->constrained('users');
             $table->boolean('is_session');
@@ -47,7 +48,7 @@ return new class extends Migration
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
+            $table->foreignUuid('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');
@@ -60,7 +61,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('tokens_activation');
-        Schema::dropIfExists('token_sessions');
+        Schema::dropIfExists('tokens_session');
         Schema::dropIfExists('sessions');
         Schema::dropIfExists('admin');
         Schema::dropIfExists('users');
