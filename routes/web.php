@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\authMiddleware;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\afterAuthMiddleware;
+use App\Livewire\Verifycode;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/location', function () {
@@ -19,6 +20,7 @@ Route::get('/location', function () {
 Route::middleware([afterAuthMiddleware::class])->group(function () {
     Route::get('/signup', Signup::class)->name('signup');
     Route::get('/signin', Signin::class)->name('signin');
+    Route::get('/signup/verifycode', Verifycode::class)->name('verifycode');
 });
 
 Route::middleware([authMiddleware::class])->group(function () {

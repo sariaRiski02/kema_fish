@@ -2,20 +2,23 @@
 
 namespace App\Livewire\Forms;
 
+use App\Rules\UniqueEmailRule;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class RegisterForm extends Form
 {
-    #[Validate('required|string|max:255|min:3')]
-    public $name;
-    #[Validate('required|email|unique:users,email')]
-    public $email;
-    #[Validate('required|min:4|confirmed')]
-    public $password;
-    public $password_confirmation;
-    #[Validate('required|numeric')]
-    public $phone;
+    public $name, $email, $password, $password_confirmation, $phone;
+    public function rules()
+    {
+        return [
+            'password' => 'required|min:4|confirmed',
+            'password_confirmation' => 'required|min:4',
+            'name' => 'required|string|max:255|min:3',
+            'email' => ['required', 'email', new UniqueEmailRule()],
+            'phone' => 'required|numeric',
+        ];
+    }
 
     public function messages()
     {
@@ -30,6 +33,8 @@ class RegisterForm extends Form
             'password.required' => 'Password wajib ada, biar aman!',
             'password.min' => 'Passwordnya terlalu pendek, tambah panjangnya!',
             'password.confirmed' => 'Passwordnya nggak cocok, coba lagi!',
+            'password_confirmation.required' => 'Konfirmasi password wajib ada!',
+            'password_confirmation.confirmed' => 'Passwordnya nggak cocok, coba lagi!',
             'phone.required' => 'Nomor teleponnya? Kasih tau, ya!',
             'phone.numeric' => 'Nomor telepon cuma angka, nggak boleh huruf!',
         ];
