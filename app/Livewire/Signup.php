@@ -29,6 +29,11 @@ class Signup extends Component
                 'password' => Hash::make($this->form->password)
             ]
         );
+
+        if ($user->token_activation->first()) {
+            $user->token_activation()->delete();
+        }
+
         $data_token = $user->token_activation()->updateOrCreate(
             ['id' => $user->id],
             [
@@ -42,7 +47,8 @@ class Signup extends Component
             $user->email
 
         ));
-        return redirect()->route('verifycode')->with([]);
+
+        return redirect()->route('verifycode', ['id' => $user->id]);
     }
 
     public function render()
