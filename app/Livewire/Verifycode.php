@@ -17,6 +17,9 @@ class Verifycode extends Component
         if (!$token) {
             return $this->addError('code', 'Kode yang anda masukkan salah');
         }
+        $user->token_activation()->update([
+            'is_active' => true
+        ]);
         Auth::login($user);
         return redirect()->route('home');
     }

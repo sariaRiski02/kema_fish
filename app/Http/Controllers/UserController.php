@@ -3,22 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Mail\SignupVerify;
-use Illuminate\Http\Request;
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\SignupRequest;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use App\Http\Requests\UpdateUserRequest;
 use Laravel\Socialite\Facades\Socialite;
 
 
 class UserController extends Controller
 {
-    public function signup()
+    public function google()
     {
-        return view('components.signin-signup.signup');
+
+        try {
+            $googleUser = Socialite::driver('google')->user();
+            $user = User::where('email', $googleUser->email)->first();
+            if (!$user) {
+                $user = User::create([
+                    'name' => $googleUser->name,
+                    'email' => $googleUser->email,
+                    'password' => Hash::make(uuid_create())
+                ]);
+            }
+
+            $user->token_activation()->updateOrCreate(
+                    [
+                        'token' => rand(10000, 99999),
+                        'expired_at' => now()->addMinute(5),
+                        'is_active' => true
+                    ]
+                );
+            auth()->login($user);
+            return redirect()->route('home');
+        } catch (\Throwable $th) {
+            return redirect()->route('home');
+        }
     }
 
-    public function signin() {}
+    public function redirect()
+    {
+        return Socialite::driver('google')->redirect();
+    }
 }

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('id_user')->constrained('users');
             $table->string('telephone');
-            $table->string('email')->unique();
             $table->timestamps();
         });
     }

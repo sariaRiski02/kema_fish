@@ -30,6 +30,10 @@ class Signup extends Component
             ]
         );
 
+        $user->contact()->create([
+            'telephone' => $this->form->phone
+        ]);
+
         if ($user->token_activation->first()) {
             $user->token_activation()->delete();
         }

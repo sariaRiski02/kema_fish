@@ -4,13 +4,11 @@ namespace App\Rules;
 
 use Closure;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Validation\ValidationRule;
 
-use function PHPUnit\Framework\isEmpty;
-use function PHPUnit\Framework\isFalse;
-use function PHPUnit\Framework\isNull;
-
-class UniqueEmailRule implements ValidationRule
+class UpdateUser implements ValidationRule
 {
     /**
      * Run the validation rule.
@@ -19,9 +17,11 @@ class UniqueEmailRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $user = User::where('email', $value)->first();
-        if ($user && optional($user->token_activation->first())->is_active) {
-            $fail('Email ini udah dipake. Coba yang lain!');
+        $user = Auth::user();
+        if ($user instanceof User) {
+            if (!Hash::check($value, $user->password)) {
+                $fail('Password lama tidak sesuai');
+            }
         }
     }
 }

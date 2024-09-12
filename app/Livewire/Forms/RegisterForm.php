@@ -16,7 +16,7 @@ class RegisterForm extends Form
             'password_confirmation' => 'required|min:4',
             'name' => 'required|string|max:255|min:3',
             'email' => ['required', 'email', new UniqueEmailRule()],
-            'phone' => 'required|numeric',
+            'phone' => 'required|numeric|unique:contacts,telephone',
         ];
     }
 
@@ -37,6 +37,7 @@ class RegisterForm extends Form
             'password_confirmation.confirmed' => 'Passwordnya nggak cocok, coba lagi!',
             'phone.required' => 'Nomor teleponnya? Kasih tau, ya!',
             'phone.numeric' => 'Nomor telepon cuma angka, nggak boleh huruf!',
+            'phone.unique' => 'Nomor telepon ini udah dipake. Coba yang lain!',
         ];
     }
 }

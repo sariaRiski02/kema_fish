@@ -12,17 +12,24 @@
     @csrf
       <div class="mb-5">
           <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-          <input type="email" name="email" wire:model.defer='form.email' id="email" class="bg-gray-50 border @error('form.email') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
+          <input type="email" name="email" wire:model.defer='form.email' id="email" class="bg-gray-50 border @error('form.email') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@example.com" required />
           @error('form.email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
       </div>
       <div class="mb-5">
           <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-          <input type="password" name="password" wire:model.defer='form.password' id="password" class="bg-gray-50 border @error('form.password') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+          <input type="password" placeholder="*********" name="password" wire:model.defer='form.password' id="password" class="bg-gray-50 border @error('form.password') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
           @error('form.password') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
       </div>
       
       <button type="submit" class="mb-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
       
+      <div class="mt-4">
+        <a href="{{ route('auth.google.redirect') }}"
+            class="flex items-center justify-center text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:focus:ring-gray-700 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:hover:bg-gray-700">
+            <img src="{{ asset('/assets/icon/google.svg') }}" alt="google" class="w-5 h-5 mr-2" />
+            Masuk Dengan Google
+        </a>
+    </div>
       @if (session()->has('message'))
           <div class="mt-3 text-green-500">
               {{ session('message') }}
