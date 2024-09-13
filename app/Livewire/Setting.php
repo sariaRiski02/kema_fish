@@ -16,19 +16,31 @@ class Setting extends Component
     public function update()
     {
         $this->validate();
+
         $user = Auth::user();
         if ($user instanceof User) {
 
-            $user->update($this->form->only('name', 'password'));
+            $data = array_filter($this->form->all(), fn($value) => !is_null($value));
 
-            $user->contact()->create([
-                'telephone' => $this->form->phone
-            ]);
+            if (!$data) {
+                return;
+            }
+
+            $user->update($data);
+
+            if (isset($data['phone'])) {
+                $user->contact->first()->update(['telephone' => $data['phone']]);
+            }
+
+            $this->form->reset();
+            session()->flash('success', 'Data berhasil diperbarui.');
         }
-        return redirect()->route('setting');
     }
     public function render()
     {
-        return view('livewire.setting');
+        $user = Auth::user();
+        $name = $user->name;
+        $phone = $user->contact->first()->telephone;
+        return view('livewire.setting', compact('name', 'phone'));
     }
 }

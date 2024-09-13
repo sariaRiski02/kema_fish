@@ -12,13 +12,13 @@ class UpdateForm extends Form
     public function rules()
     {
         return [
-            'name' => ['string', 'max:255'],
-            'phone' => ['numeric', 'unique:contacts,telephone'],
-            'password' => ['string', 'min:4', 'confirmed']
+            'name' => ['nullable', 'string', 'max:255'],
+            'phone' => ['nullable', 'numeric', 'unique:contacts,telephone'],
+            'password' => ['nullable', 'string', 'min:4', 'confirmed']
         ];
     }
 
-    public function message()
+    public function messages()
     {
         return [
             'name.string' => 'Nama macam apa ini angka semua..!',
