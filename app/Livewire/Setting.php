@@ -19,15 +19,13 @@ class Setting extends Component
         $user = Auth::user();
         if ($user instanceof User) {
 
-            $user->update([
-                'name' => $this->form->name,
-                'password' => bcrypt($this->form->password),
-            ]);
+            $user->update($this->form->only('name', 'password'));
 
             $user->contact()->create([
                 'telephone' => $this->form->phone
             ]);
         }
+        return redirect()->route('setting');
     }
     public function render()
     {

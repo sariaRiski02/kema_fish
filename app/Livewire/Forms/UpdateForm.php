@@ -7,15 +7,14 @@ use Livewire\Form;
 
 class UpdateForm extends Form
 {
-    public $name, $phone, $password, $password_confirmation, $current_password;
+    public $name, $phone, $password, $password_confirmation;
 
     public function rules()
     {
         return [
             'name' => ['string', 'max:255'],
             'phone' => ['numeric', 'unique:contacts,telephone'],
-            'password' => ['string', 'min:4', 'confirmed'],
-            'current_password' => ['required', 'string', new UpdateUser]
+            'password' => ['string', 'min:4', 'confirmed']
         ];
     }
 
@@ -29,8 +28,6 @@ class UpdateForm extends Form
             'password.string' => 'Passwordnya Harus berupa string ya..!',
             'password.min' => 'passwordnya pendek banget..! min:4 lah..',
             'password.confirmed' => 'Waduh..! Passwordnya beda nih..!',
-            'current_password.required' => 'Passwordnya jangan lupa diisi ya..!',
-            'current_password.string' => 'Passwordnya Harus berupa string ya..!'
         ];
     }
 }
