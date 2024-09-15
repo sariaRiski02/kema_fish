@@ -19,7 +19,12 @@ class Address extends Model
 
 
     protected $fillable = [
-        'country', 'province', 'district', 'subdistrict', 'village', 'description'
+        'province',
+        'district',
+        'city',
+        'village',
+        'detail_address',
+        'postal_code'
     ];
 
     protected static function boot()
