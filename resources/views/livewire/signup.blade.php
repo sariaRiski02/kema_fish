@@ -1,5 +1,6 @@
 <div class="pt-40">
     <form class="max-w-md mx-auto" wire:submit.prevent='register'>
+        @csrf
         <div class="relative z-0 w-full mb-5 group">
             <div class="relative z-0 w-full mb-5 group">
                 <input type="text" name="name" wire:model.live='form.name' id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer
@@ -102,10 +103,10 @@
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 
         <div class="mt-4">
-            <a href=""
+            <a href="{{ route('auth.google.redirect') }}"
                 class="flex items-center justify-center text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:focus:ring-gray-700 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:hover:bg-gray-700">
                 <img src="{{ asset('/assets/icon/google.svg') }}" alt="google" class="w-5 h-5 mr-2" />
-                Login with Google
+                Masuk Dengan Google
             </a>
         </div>
     </form>

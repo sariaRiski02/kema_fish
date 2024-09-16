@@ -3,11 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class afterAuthMiddleware
+class verifyCodeMIddleware
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,11 @@ class afterAuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check()) {
-            return $next($request);
+        $route = $request->route();
+        $user = User::where('id', $route->id)->first();
+        if (!$user) {
+            return redirect()->route('home');
         }
-        return redirect()->route('home');
+        return $next($request);
     }
 }

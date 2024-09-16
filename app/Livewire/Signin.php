@@ -23,7 +23,7 @@ class Signin extends Component
             session()->flash('error', 'Gagal login, Periksa kembali email dan password anda.');
         } else {
 
-            return response()->redirectTo('/');
+            return redirect()->route('home');
         }
     }
 
