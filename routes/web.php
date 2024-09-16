@@ -1,13 +1,14 @@
 <?php
 
-use App\Models\User;
 use App\Livewire\Cart;
 use App\Livewire\Home;
+use App\Livewire\Admin;
 use App\Livewire\Signin;
 use App\Livewire\Signup;
-use App\Livewire\Counter;
 use App\Livewire\Setting;
+use App\Livewire\LoginAdmin;
 use App\Livewire\Verifycode;
+use App\Livewire\RegisterAdmin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\authMiddleware;
@@ -36,4 +37,12 @@ Route::middleware([authMiddleware::class])->group(function () {
         return redirect()->route('home');
     })->name('signout');
     Route::get('/settings', Setting::class)->name('settings');
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/register/{code}', RegisterAdmin::class)->name('admin.register');
+    Route::get('/login', LoginAdmin::class)->name('admin.login');
+    Route::get('/logout', LoginAdmin::class)->name('admin.logout');
+    Route::get('/dashboard', Admin::class)->name('admin.dashboard');
 });

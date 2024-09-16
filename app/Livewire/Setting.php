@@ -75,6 +75,7 @@ class Setting extends Component
         $name = $user->name;
         $phone = $user->contact->first()->telephone ?? '';
         $address = $user->address->first();
+
         return view('livewire.setting', compact('name', 'phone', 'address'));
     }
 }
