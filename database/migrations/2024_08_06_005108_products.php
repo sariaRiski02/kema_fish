@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('id_category')->constrained('categories');
-            $table->foreignUuid('id_admin')->constrained('admin');
             $table->float('price');
             $table->string('name');
             $table->tinyInteger('entity_product');

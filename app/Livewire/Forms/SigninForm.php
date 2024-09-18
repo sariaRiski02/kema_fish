@@ -16,8 +16,7 @@ class SigninForm extends Form
     public function messages()
     {
         return [
-
-            'email.required' => 'Email mana nih? Kasih tau dong!',
+            'email.required' => 'lah emailnya kagak ada? Kasih tau dong!',
             'password.required' => 'Password wajib ada, biar aman!',
         ];
     }

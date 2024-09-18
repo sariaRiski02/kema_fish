@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use App\Mail\SignupVerify;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use App\Livewire\Forms\RegisterForm;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +56,7 @@ class Signup extends Component
         return redirect()->route('verifycode', ['id' => $user->id]);
     }
 
+    #[Layout('layouts.appStart')]
     public function render()
     {
         return view('livewire.signup');

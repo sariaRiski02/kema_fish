@@ -22,12 +22,12 @@ class AddressFactory extends Factory
 
         return [
             'id_user' => User::inRandomOrder()->first()->id,
-            'country' => 'indonesia',
             'province' => $this->faker->city,
             'district' => $this->faker->word,
-            'subdistrict' => $this->faker->word,
+            'city' => $this->faker->word,
             'village' => $this->faker->word,
-            'description' => $this->faker->text
+            'postal_code' => $this->faker->postcode,
+            'detail_address' => $this->faker->text
         ];
     }
 }

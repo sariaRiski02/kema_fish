@@ -7,7 +7,7 @@ use Livewire\Attributes\Layout;
 
 class Admin extends Component
 {
-    #[Layout('layouts.appAdmin')]
+    #[Layout('layouts.appStart')]
     public function render()
     {
         return view('livewire.admin');

@@ -33,7 +33,7 @@
                 id="product">
 
                 <a href="/product/code">
-                    <img class="p-8" src="{{ asset('/assets/logo/blue.png') }}" alt="product image" id="product-img"
+                    <img class="p-8" src="https://source.unsplash.com/1600x900/?water" alt="product image" id="product-img"
                         style="max-width: 200px; max-height: 200px;" />
                 </a>
                 <div class="px-2 pb-3 w-full" id="container-text-product">

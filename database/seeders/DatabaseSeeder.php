@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\CartSeeder;
 use Database\Seeders\UserSeeder;
-use Database\Seeders\AdminSeeder;
 use Database\Seeders\AddressSeeder;
 use Database\Seeders\ContactSeeder;
 use Database\Seeders\ProductSeeder;
@@ -25,7 +24,6 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ContactSeeder::class,
             AddressSeeder::class,
-            AdminSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
             CartSeeder::class,

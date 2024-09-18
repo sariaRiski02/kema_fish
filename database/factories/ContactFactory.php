@@ -23,7 +23,6 @@ class ContactFactory extends Factory
         return [
             'id_user' => User::inRandomOrder()->first()->id,
             'telephone' => $this->faker->phoneNumber,
-            'email' => $this->faker->unique()->safeEmail
         ];
     }
 }

@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name')->nullable(false);
+            $table->string('role')->default('user');
             $table->string('email')->unique();
             $table->string('password')->nullable(false);
 
@@ -38,14 +39,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('admin', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->timestamps();
-        });
-
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignUuid('user_id')->nullable()->index();
@@ -63,7 +56,7 @@ return new class extends Migration
         Schema::dropIfExists('tokens_activation');
         Schema::dropIfExists('tokens_session');
         Schema::dropIfExists('sessions');
-        Schema::dropIfExists('admin');
+
         Schema::dropIfExists('users');
     }
 };
