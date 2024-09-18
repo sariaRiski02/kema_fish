@@ -42,9 +42,10 @@ class Cart extends Component
     public function render()
     {
         $user = Auth::user();
-        $cart = CartModel::where('id_user', $user->id)->get();
-        $total = $cart->pluck('product.price')->sum();
-
+        $cart = CartModel::where('id_user', $user->id)->orderBy('created_at', 'desc')->get();
+        $total = $cart->map(function ($item) {
+            return $item->product->price * $item->product_quantity;
+        })->sum();
         return view('livewire.cart', compact('cart', 'total'));
     }
 }

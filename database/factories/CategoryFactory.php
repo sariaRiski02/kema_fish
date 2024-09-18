@@ -18,7 +18,6 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_admin' => Admin::inRandomOrder()->first()->id,
             'name' => $this->faker->word,
             'description' => $this->faker->text
         ];

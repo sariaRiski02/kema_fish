@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/js/app.js'])
-    
+    <link rel="icon" href="{{ asset('/assets/logo/blue.png') }}">
     <title>{{ Route::currentRouteName() ?? 'Page Title' }}</title>
 
 </head>
@@ -17,5 +17,4 @@
     {{ $slot }}
     
 </body>
-
 </html>

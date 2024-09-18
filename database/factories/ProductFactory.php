@@ -20,11 +20,11 @@ class ProductFactory extends Factory
     {
         return [
             'id_category' => Category::inRandomOrder()->first()->id,
-            'id_admin' => Admin::inRandomOrder()->first()->id,
             'price' => rand(2000, 50000),
             'name' => $this->faker->word,
             'entity_product' => rand(0, 12),
             'description' => $this->faker->text,
+            'additional_information' => $this->faker->text,
         ];
     }
 }

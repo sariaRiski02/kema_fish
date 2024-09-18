@@ -10,11 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class Home extends Component
 {
-
     public $idProduct;
 
     public function addToCart($idProduct)
     {
+
+        if (!Auth::user()) {
+            return redirect()->route('signin');
+        }
 
         $user = Auth::user();
         $product = Product::where('id', $idProduct)->first();
@@ -30,7 +33,7 @@ class Home extends Component
     public function render()
     {
         $categories = Category::all();
-        $products = Product::all();
+        $products = Product::orderBy('created_at', 'desc')->get();
 
 
         return view('livewire.home', compact('products', 'categories'));

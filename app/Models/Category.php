@@ -31,11 +31,6 @@ class Category extends Model
         });
     }
 
-    public function admin()
-    {
-        return $this->belongsTo(admin::class, 'id_admin', 'id');
-    }
-
     public function product()
     {
         return $this->hasMany(Product::class, 'id_category', 'id');

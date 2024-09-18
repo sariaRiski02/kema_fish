@@ -22,7 +22,8 @@ class Product extends Model
         'name',
         'price',
         'entity_product',
-        'description'
+        'description',
+        'additional_information',
     ];
 
     protected static function boot()
@@ -36,11 +37,6 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'id_category', 'id');
-    }
-
-    public function admin()
-    {
-        return $this->belongsTo(Admin::class, 'id_admin', 'id');
     }
 
     public function cart()
