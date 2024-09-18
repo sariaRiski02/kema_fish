@@ -24,6 +24,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->word,
             'entity_product' => rand(0, 12),
             'description' => $this->faker->text,
+            'additional_information' => $this->faker->text,
         ];
     }
 }

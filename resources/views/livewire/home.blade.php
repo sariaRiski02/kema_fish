@@ -32,12 +32,12 @@
             <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
                 id="product">
 
-                <a href="/product/code">
-                    <img class="p-8" src="https://source.unsplash.com/1600x900/?water" alt="product image" id="product-img"
+                <a href="/product/{{ $product->id }}">
+                    <img class="p-8" src="https://picsum.photos/400/300" alt="product image" id="product-img"
                         style="max-width: 200px; max-height: 200px;" />
                 </a>
                 <div class="px-2 pb-3 w-full" id="container-text-product">
-                    <a href="#">
+                    <a href="/product/{{ $product->id }}">
                         <h5 class="text-sm font-semibold tracking-tight text-gray-900 dark:text-white"
                             id="text-product">
                             {{ $product->name }}
@@ -48,7 +48,11 @@
                         <span class="text-md font-bold text-gray-900 dark:text-white" id="price">Rp. {{
                             number_format($product->price)
                             }}</span>
-                        <button class="border rounded-md border-gray-700 p-2" id="notif" onclick="notif()" wire:click="addToCart('{{ $product->id }}')" id="cart">
+                        <button class="border rounded-md border-gray-700 p-2" id="notif" 
+                        @auth
+                        onclick="notif()"     
+                        @endauth
+                        wire:click="addToCart('{{ $product->id }}')" id="cart">
                             <img src="{{ asset('/assets/icon/Basket_alt_3.svg') }}" id="image-cart">
                         </button>
                     </div>

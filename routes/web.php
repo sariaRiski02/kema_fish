@@ -6,9 +6,8 @@ use App\Livewire\Admin;
 use App\Livewire\Signin;
 use App\Livewire\Signup;
 use App\Livewire\Setting;
-use App\Livewire\LoginAdmin;
 use App\Livewire\Verifycode;
-use App\Livewire\RegisterAdmin;
+use App\Livewire\ProductDetail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\authMiddleware;
@@ -44,3 +43,5 @@ Route::middleware([authMiddleware::class])->group(function () {
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/dashboard', Admin::class)->name('admin.dashboard')->middleware([AdminMiddleware::class]);
 });
+
+Route::get('/product/{code}', ProductDetail::class)->name('product.detail');

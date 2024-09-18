@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->tinyInteger('entity_product');
             $table->text('description');
+            $table->text('additional_information');
             $table->timestamps();
         });
     }
