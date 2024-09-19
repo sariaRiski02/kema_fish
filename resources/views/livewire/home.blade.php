@@ -7,13 +7,13 @@
         <div class="flex gap-2 overflow-x-scroll p-4 scroll-smooth" id="scrollbar">
 
             @foreach ($categories as $category)
-            <a href="#">
+            <button wire:click='byCategory("{{ $category->id }}")'>
+                
                 <div class="flex flex-col justify-center items-center w-32 h-32 rounded-2xl border" id="category">
                     <img src="{{ asset('/assets/logo/blue.png') }}" alt="product" class="w-16" id="category-img">
                     <span class="font-outfit" id="category-text">{{ $category->name }}</span>
-
                 </div>
-            </a>
+            </button>
             @endforeach
 
         </div>

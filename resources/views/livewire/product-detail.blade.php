@@ -3,7 +3,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             <!-- Product Image -->
             <div class="flex justify-center">
-                <img class="rounded-lg shadow-lg w-3/4" src="{{ asset('assets/image/rill.jpg') }}" alt="Product Image">
+                <img class="rounded-lg shadow-lg w-3/5" src="{{ asset('assets/image/rill.jpg') }}" alt="Product Image">
             </div>
     
             <!-- Product Details -->
@@ -19,16 +19,17 @@
                     {{ $product->description }}
                 </p>
     
-                <!-- Quantity Selector -->
+                <!-- quantity product -->
                 <div class="mt-6 flex items-center space-x-3">
                     <label for="quantity" class="block text-m font-medium text-gray-700 dark:text-gray-400">Tersisa: {{ $product->entity_product }}</label>
                     
                 </div>
     
                 <!-- Action Buttons -->
-                <div class="mt-6 flex space-x-4">
-                    <button class="px-5 py-3 text-white bg-blue-800 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-900 dark:focus:ring-blue-800 font-medium">
-                        <object type="image/svg+xml" data="{{ asset('assets/icon/cart-white.svg') }}" style="width: 24px; height: 24px;">Icon tidak tersedia</object>
+                <div class="mt-6 flex space-x-4 ">
+                    <button wire:click='addToCart' class="px-5 py-3 text-white bg-blue-800 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-900 dark:focus:ring-blue-800 font-medium">
+                       
+                        <img src="{{ asset('assets/icon/cart-white.svg') }}" alt="" style="width: 24px; height: 24px;">
                     </button>
                     <button class="px-5 py-3 text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:ring-green-300 dark:bg-green-500 dark:hover:bg-green-600 dark:focus:ring-green-800 font-medium">
                         Beli

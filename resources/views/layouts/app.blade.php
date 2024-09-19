@@ -16,7 +16,7 @@
 
     @include('headers.header')
     {{ $slot }}
-    {{-- @include('footers.footer') --}}
+    @include('footers.footer')
 </body>
 
 </html>
