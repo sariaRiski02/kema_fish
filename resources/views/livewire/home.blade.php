@@ -2,6 +2,7 @@
 
     <div class="flex flex-col gap-4" id="category-container">
 
+        @if ($categories)
         <div class="text-lg text-black font-outfit font-bold">Kategori</div>
 
         <div class="flex gap-2 overflow-x-scroll p-4 scroll-smooth" id="scrollbar">
@@ -15,20 +16,20 @@
                 </div>
             </button>
             @endforeach
-
+            
         </div>
+        @endif
 
     </div>
 
     <div class="flex flex-col gap-4">
 
-        <div class="text-lg text-black font-outfit font-bold">Produk</div>
-
+        @if ($products)
+        <div class="text-lg text-black font-outfit font-bold">
+            Produk
+        </div>
         <div class="flex flex-row gap-2 justify-start flex-wrap">
-
-
             @foreach ($products as $product)
-
             <div class="flex flex-col justify-center items-center grow-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
                 id="product">
 
@@ -60,11 +61,18 @@
             </div>
 
             @endforeach
-
-
-
-
         </div>
+        @else
+
+        <div class="flex justify-center gap-3 flex-col h-60 items-center mt-4">
+            <div class="text-red-400 text-m">Produk nggak ada cuyy!</div>
+            
+            <a href="{{ route('home') }}" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                kembali Keberanda
+            </a>
+        </div>
+        
+        @endif
 
         {{-- notification for add cart --}}
         <div id="alert-3" class="hidden fixed z-50 top-5 flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
