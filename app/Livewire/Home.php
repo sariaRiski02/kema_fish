@@ -34,6 +34,7 @@ class Home extends Component
     }
     public function byCategory($idCategory)
     {
+
         $this->selectedCategoryId = $idCategory;
     }
 
@@ -50,7 +51,9 @@ class Home extends Component
             $products = Product::where('id_category', $this->selectedCategoryId)->get();
         }
         if ($this->nameProduct) {
+            $categories = '';
             $products = Product::where('name', 'like', "%$this->nameProduct%")->get();
+            $products = !$products->empty() ? $products : null;
         }
 
         return view('livewire.home', compact('products', 'categories'));
