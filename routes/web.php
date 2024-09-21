@@ -14,7 +14,9 @@ use App\Http\Middleware\authMiddleware;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\GuestMiddleware;
+use App\Http\Controllers\adminController;
 use App\Http\Middleware\verifyCodeMIddleware;
+use App\Http\Controllers\adminProductController;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/location', function () {
@@ -41,7 +43,10 @@ Route::middleware([authMiddleware::class])->group(function () {
 
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/dashboard', Admin::class)->name('admin.dashboard')->middleware([AdminMiddleware::class]);
-});
+    Route::get('/dashboard', [adminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/product', [adminProductController::class, 'index'])->name('admin.product');
+    Route::get('/add/product', [adminProductController::class, 'create'])->name('admin.create-product');
+    Route::post('/add/product', [adminProductController::class, 'addProduct'])->name('admin.create-product');
+})->middleware([AdminMiddleware::class]);
 
 Route::get('/product/{code}', ProductDetail::class)->name('product.detail');
