@@ -22,8 +22,9 @@ class Product extends Model
         'name',
         'price',
         'entity_product',
-        'description',
-        'additional_information',
+        'image',
+
+        'detail_description',
     ];
 
     protected static function boot()

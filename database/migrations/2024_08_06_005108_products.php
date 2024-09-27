@@ -16,13 +16,13 @@ return new class extends Migration
             $table->foreignUuid('id_category')->constrained('categories');
             $table->float('price');
             $table->string('name');
+            $table->string('image')->nullable();
             $table->tinyInteger('entity_product');
-            $table->text('description');
-            $table->text('additional_information');
+            $table->text('description')->nullable();
+            $table->text('detail_description')->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
