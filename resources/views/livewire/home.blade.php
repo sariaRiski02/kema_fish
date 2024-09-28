@@ -34,7 +34,11 @@
                 id="product">
 
                 <a href="/product/{{ $product->id }}">
-                    <img class="p-8" src="https://picsum.photos/400/300" alt="product image" id="product-img"
+                <img class="p-8" src="
+
+                 https://picsum.photos/400/300
+                 
+                " alt="product image" id="product-img"
                         style="max-width: 200px; max-height: 200px;" />
                 </a>
                 <div class="px-2 pb-3 w-full" id="container-text-product">

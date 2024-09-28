@@ -44,6 +44,8 @@ Route::middleware([authMiddleware::class])->group(function () {
 Route::group(['prefix' => 'admin', 'middleware' => AdminMiddleware::class], function () {
     Route::get('/dashboard', [adminController::class, 'index'])->name('admin.dashboard');
     Route::get('/product', [adminProductController::class, 'index'])->name('admin.product');
+    Route::get('/product/update/{id}', [adminProductController::class, 'updatePage'])->name('admin.update-product');
+    Route::post('/product/update/{id}', [adminProductController::class, 'update']);
     Route::get('/add/product', [adminProductController::class, 'create'])->name('admin.create-product');
     Route::post('/add/product', [adminProductController::class, 'addProduct']);
     Route::post('/search/product', [adminProductController::class, 'searchProduct'])->name('admin.search-product');

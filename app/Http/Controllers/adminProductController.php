@@ -37,11 +37,9 @@ class adminProductController extends Controller
             $request->file('image')->getClientOriginalName() : '';
 
         try {
-
-
             if ($request->hasFile('image')) {
                 $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
-                $request->file('image')->move(public_path('images'), $imageName);
+                $request->file('image')->move(public_path('assets/productImages'), $imageName);
             }
             $category = Category::where('id', $data['category'])->first();
             $category->product()->create([
@@ -72,5 +70,57 @@ class adminProductController extends Controller
     {
         $products = Product::where('name', 'like', "%$request->search%")->get();
         return view('admin.product', compact('products'));
+    }
+
+
+    public function updatePage($id)
+    {
+
+        $categories = Category::all();
+
+        $product = Product::where('id', $id)->first();
+
+        return view('admin.update-product', compact('categories', 'product', 'id'));
+    }
+
+
+    public function update(addProductRequest $request, $id)
+    {
+        $data = $request->validated();
+        $imageName = '';
+        if ($request->hasFile('image')) {
+            $imageName = time() . '-' . $request->file('image')->getClientOriginalName();
+            $request->file('image')->move(public_path('assets/images'), $imageName);
+        }
+
+        $category = Category::where('id', $data['category'])->first();
+
+
+
+        try {
+            $products = $category->product->where('id', $id)->first();
+            if ($products) {
+                $products->update([
+                    'name' => $data['name'],
+                    'entity_product' => $data['entity_product'],
+                    'price' => $data['price'],
+                    'image' => $imageName,
+                    'description' => $data['description'],
+                    'detail_description' => $data['detail_description'],
+                ]);
+            } else {
+                return redirect()->back()->withErrors([
+                    'error' => 'data tidak ditemukan'
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors([
+                'error' => "data tidak bisa di proses"
+            ]);
+        }
+
+        return redirect()->back()->with([
+            'success' => 'produk berhasil diperbarui'
+        ]);
     }
 }
