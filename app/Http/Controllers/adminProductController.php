@@ -39,6 +39,10 @@ class adminProductController extends Controller
         try {
 
 
+            if ($request->hasFile('image')) {
+                $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
+                $request->file('image')->move(public_path('images'), $imageName);
+            }
             $category = Category::where('id', $data['category'])->first();
             $category->product()->create([
                 'name' => $data['name'],
