@@ -46,9 +46,10 @@ Route::group(['prefix' => 'admin', 'middleware' => AdminMiddleware::class], func
     Route::get('/product', [adminProductController::class, 'index'])->name('admin.product');
     Route::get('/product/update/{id}', [adminProductController::class, 'updatePage'])->name('admin.update-product');
     Route::post('/product/update/{id}', [adminProductController::class, 'update']);
-    Route::get('/add/product', [adminProductController::class, 'create'])->name('admin.create-product');
-    Route::post('/add/product', [adminProductController::class, 'addProduct']);
-    Route::post('/search/product', [adminProductController::class, 'searchProduct'])->name('admin.search-product');
+    Route::get('/product/add', [adminProductController::class, 'create'])->name('admin.create-product');
+    Route::post('/product/add', [adminProductController::class, 'addProduct']);
+    Route::post('/product/search', [adminProductController::class, 'searchProduct'])->name('admin.search-product');
+    Route::post('/product/delete/{id?}', [adminProductController::class, 'delete'])->name('admin.delete-product');
 });
 
 Route::get('/product/{code}', ProductDetail::class)->name('product.detail');

@@ -15,11 +15,11 @@ class adminProductController extends Controller
         $products = Product::with('category')->get();
         $count = $products->count();
         $entityProduct = $products->pluck('entity_product')->sum();
-        $avarageProduct = $products->pluck('price')->sum() / $entityProduct;
+
+        $price = $products->pluck('price')->sum();
         return view('admin.product', compact([
             'products',
             'count',
-            'avarageProduct',
             'entityProduct',
         ]));
     }
@@ -92,23 +92,21 @@ class adminProductController extends Controller
             $imageName = time() . '-' . $request->file('image')->getClientOriginalName();
             $request->file('image')->move(public_path('assets/images'), $imageName);
         }
-
         $category = Category::where('id', $data['category'])->first();
-
-
-
         try {
-            $products = $category->product->where('id', $id)->first();
+            $products = Product::where('id', $id)->first();
             if ($products) {
                 $products->update([
                     'name' => $data['name'],
                     'entity_product' => $data['entity_product'],
                     'price' => $data['price'],
+                    'id_category' => $category->id,
                     'image' => $imageName,
                     'description' => $data['description'],
                     'detail_description' => $data['detail_description'],
                 ]);
             } else {
+
                 return redirect()->back()->withErrors([
                     'error' => 'data tidak ditemukan'
                 ]);
@@ -119,8 +117,32 @@ class adminProductController extends Controller
             ]);
         }
 
+
         return redirect()->back()->with([
             'success' => 'produk berhasil diperbarui'
+        ]);
+    }
+
+    public function delete(Request $request)
+    {
+
+        $data = $request->input('selected_products');
+
+        if (empty($data)) {
+            return redirect()->back()->withErrors([
+                'error' => "Tidak ada produk yang dipilih untuk dihapus"
+            ]);
+        }
+
+        $result = Product::whereIn('id', $data)->delete();
+
+        if (!$result) {
+            return redirect()->back()->withErrors([
+                'error' => "data tidak ditemukan"
+            ]);
+        }
+        return redirect()->back()->with([
+            'success' => 'Produk yang dipilih berhasil dihapus'
         ]);
     }
 }
