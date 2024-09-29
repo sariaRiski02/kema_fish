@@ -15,8 +15,6 @@ class adminProductController extends Controller
         $products = Product::with('category')->get();
         $count = $products->count();
         $entityProduct = $products->pluck('entity_product')->sum();
-
-        $price = $products->pluck('price')->sum();
         return view('admin.product', compact([
             'products',
             'count',
@@ -68,8 +66,17 @@ class adminProductController extends Controller
 
     public function searchProduct(Request $request)
     {
-        $products = Product::where('name', 'like', "%$request->search%")->get();
-        return view('admin.product', compact('products'));
+        $productsBySearch = Product::where('name', 'like', "%$request->search%")->get();
+        $products = Product::with('category')->get();
+        $count = $products->count();
+        $entityProduct = $products->pluck('entity_product')->sum();
+        return view('admin.product', compact([
+            'products',
+            'count',
+            'entityProduct',
+            'productsBySearch'
+        ]));
+        // return view('admin.product', compact('products'));
     }
 
 
